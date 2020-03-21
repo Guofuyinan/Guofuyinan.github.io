@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hexo</title>
+  <title>HashMap特性和源码 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Keep Working">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="HashMap在1.7和1.8做了一个比较大的改变，1.7使用的是&#x3D;&#x3D;数组+链表&#x3D;&#x3D;。他的数据节点是一个Entry节点，一个它的内部类，数据插入的过程使用一个&#x3D;&#x3D;头插法&#x3D;&#x3D;。头插法它在resize（扩容）的过程中在里面有一个resize的方法，它又调用了一个transfer方法，把里面的一些Entry进行了rehash。在这个过程中可能会造成一个链表的一个循环可能在下一次get的时候出现死循环的情">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HashMap特性和源码">
+<meta property="og:url" content="http://yoursite.com/2020/03/21/HashMap%E7%89%B9%E6%80%A7%E5%92%8C%E6%BA%90%E7%A0%81/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Keep Working">
+<meta property="og:description" content="HashMap在1.7和1.8做了一个比较大的改变，1.7使用的是&#x3D;&#x3D;数组+链表&#x3D;&#x3D;。他的数据节点是一个Entry节点，一个它的内部类，数据插入的过程使用一个&#x3D;&#x3D;头插法&#x3D;&#x3D;。头插法它在resize（扩容）的过程中在里面有一个resize的方法，它又调用了一个transfer方法，把里面的一些Entry进行了rehash。在这个过程中可能会造成一个链表的一个循环可能在下一次get的时候出现死循环的情">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-03-21T04:55:23.359Z">
+<meta property="article:modified_time" content="2020-03-21T11:06:43.034Z">
 <meta property="article:author" content="Lemon">
 <meta name="twitter:card" content="summary">
   
@@ -152,16 +154,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-HashMap特性和源码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-HashMap特性和源码" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/21/HashMap%E7%89%B9%E6%80%A7%E5%92%8C%E6%BA%90%E7%A0%81/">HashMap特性和源码</a>
+    <h1 class="article-title" itemprop="name">
+      HashMap特性和源码
     </h1>
   
 
@@ -183,6 +183,27 @@
       
 
       
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
     <div class="article-info article-info-index">
       
@@ -190,16 +211,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/21/HashMap%E7%89%B9%E6%80%A7%E5%92%8C%E6%BA%90%E7%A0%81/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/21/HashMap%E7%89%B9%E6%80%A7%E5%92%8C%E6%BA%90%E7%A0%81/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/02/25/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E7%9A%84%E5%88%A9%E4%B8%8E%E5%BC%8A/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">前后端分离的利与弊</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -219,166 +299,14 @@
 
 
 
-
   
-    <article id="post-前后端分离的利与弊" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/25/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E7%9A%84%E5%88%A9%E4%B8%8E%E5%BC%8A/">前后端分离的利与弊</a>
-    </h1>
   
 
-        
-        <a href="/2020/02/25/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E7%9A%84%E5%88%A9%E4%B8%8E%E5%BC%8A/" class="archive-article-date">
-  	<time datetime="2020-02-25T11:59:31.604Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="浅谈前后端分离"><a href="#浅谈前后端分离" class="headerlink" title="浅谈前后端分离"></a>浅谈前后端分离</h1><p>前后端分离这两年被炒得如火如荼。那你对前后端分离有什么理解，或者说你觉得一个项目应该如何去实施前后端分离。</p>
-<p>Vue.js？Rest接口规范？Ajax异步请求？等等…</p>
-<p><strong>在我看来这件事不应该已一个具体的技术来切入 不要理解与局限。不应该为了做前后端分离而去前后端分离。</strong></p>
-<p>JSP 一个典型的前后端耦合技术，全家上下一起套模板，套的死去活来。</p>
-<p>当下时代，互联网服务更加繁荣，需求层级更加高档，用户对前端展示的页面要求更高，JSP已经逐渐被社会趋势所淘汰，开发效率跟不上时代的进程使其逐渐没落。</p>
-<p>解耦合的需求引出了前后端分离的浪潮。使前端工程化 项目化，这才是前后端分离开发模式最初始的来源。</p>
-<p>本质上来看，前后端分离并不是一个技术层面上得问题，而是一个工程化考量和项目管理的问题。摒弃<del>面向复制粘贴编程</del>，<del>东拼西凑</del>的实现方式。</p>
-<p>所以Vue.js Rest.js从本质上改变了游戏规则，自此开始，大家都遵循这一套体系来约束性的开发。前端开发更加工程化，组件化。随着Node的出现，前端开发也可以借助Node来开发各种各样的工具。各种各样的包管理器，各种各样的预编译工具…这也是前端开发迈入工程化可迭代化的一个很重要的方面。</p>
-<p>那到底前后端分离要如何去实施呢，或者说到底怎么样去做才是一个比较优雅的前后端分离呢？</p>
-<p>一个正常的软件开发简化来讲应该有四步：</p>
-<p><strong>1.设计</strong></p>
-<p><strong>2.开发</strong></p>
-<p><strong>3.测试</strong></p>
-<p><strong>4.部署</strong></p>
-<p>所以真正的前后端分离应该渗透到当中每一个步骤中去，这才能说算的上是真正的前后端分离。</p>
-<p><strong>1.设计阶段：</strong>设计的第一个阶段当然是系统设计。后端的系统设计包括系统架构设计，数据库，中间件，缓存。主要是考虑性能 容量 扩展性 可维护性 前端也应该如此，前端的架构也应该做好充分的架构和准备，一定要满足一个长期的可演进的 可迭代的目标，前后端分离之后 前后端通过接口进行交互 这个时候模型（Model)层面的接口约定极其重要，包括接口的请求方式啊 数据类型，等等……</p>
-<p><strong>2.开发阶段</strong>：前后端各按照约定好的接口独立开发，互相不会扯皮 一旦前后端的开发人员出现相互扯皮，就称不上是严格意义的独立的前后端分离。</p>
-<p><strong>3.测试阶段：</strong>应该是前后端可独立的测试，前端的页面 跳转 展示 输入 ，后端则主要保证数据接口的提供 校验 异常。</p>
-<p><strong>4.部署阶段：</strong>前后端分离之后，前后端项目可独立部署，双方根据各自的版本规划来发版本，相互不约束 不受制于人 。</p>
-<p>前后端分离确实很适合复杂的大型项目，但需要庞大的人工成本 开发成本 工具成本 部署成本 尤其是你想做一个完全意义上的前后端分离，强行的 不切实际的前后端分离开发只会给自己找麻烦，并不是所有项目都适合前后端分离</p>
-<p>还是那句话，前后端分离，他本是不是一个技术问题，而是一个工程考量的问题。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/25/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E7%9A%84%E5%88%A9%E4%B8%8E%E5%BC%8A/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/01/hello-world/">Hello World</a>
-    </h1>
   
 
-        
-        <a href="/2020/02/01/hello-world/" class="archive-article-date">
-  	<time datetime="2020-02-01T11:22:16.588Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/01/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
+
   
 
 
@@ -401,8 +329,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
