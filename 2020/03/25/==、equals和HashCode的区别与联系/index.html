@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>==、equals和HashCode的区别与联系 | 郭付一男的Hexo博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在java中： &#x3D;&#x3D;是运算符，用于比较两个变量是否相等。 equals，是Objec类的方法，用于比较两个对象是否相等，默认Object类的equals方法是比较两个对象的地址，跟&#x3D;&#x3D;的结果一样。Object的equals方法如下： 123public boolean equals(Object obj) &amp;#123;    return (this &#x3D;&#x3D; obj);&amp;#125;  hashCod">
+  <meta name="description" content="在java中： &#x3D;&#x3D;是运算符，用于比较两个变量是否相等。 equals，是Objec类的方法，用于比较两个对象是否相等，默认Object类的equals方法是比较两个对象的地址，跟&#x3D;&#x3D;的结果一样。Object的equals方法如下： 123public boolean equals(Object obj) &amp;#123;    return (this &#x3D;&#x3D; obj);&amp;#125;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="&#x3D;&#x3D;、equals和HashCode的区别与联系">
 <meta property="og:url" content="http://yoursite.com/2020/03/25/==%E3%80%81equals%E5%92%8CHashCode%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB/index.html">
 <meta property="og:site_name" content="郭付一男的Hexo博客">
-<meta property="og:description" content="在java中： &#x3D;&#x3D;是运算符，用于比较两个变量是否相等。 equals，是Objec类的方法，用于比较两个对象是否相等，默认Object类的equals方法是比较两个对象的地址，跟&#x3D;&#x3D;的结果一样。Object的equals方法如下： 123public boolean equals(Object obj) &amp;#123;    return (this &#x3D;&#x3D; obj);&amp;#125;  hashCod">
+<meta property="og:description" content="在java中： &#x3D;&#x3D;是运算符，用于比较两个变量是否相等。 equals，是Objec类的方法，用于比较两个对象是否相等，默认Object类的equals方法是比较两个对象的地址，跟&#x3D;&#x3D;的结果一样。Object的equals方法如下： 123public boolean equals(Object obj) &amp;#123;    return (this &#x3D;&#x3D; obj);&amp;#125;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-03-25T02:21:04.275Z">
-<meta property="article:modified_time" content="2020-03-25T02:59:31.821Z">
+<meta property="article:modified_time" content="2020-03-25T04:13:27.708Z">
 <meta property="article:author" content="郭付一男">
 <meta name="twitter:card" content="summary">
   
@@ -81,13 +81,7 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
-		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+					<a class="github" target="_blank" href="https://github.com/Guofuyinan" title="github"><i class="icon-github"></i></a>
 		        
 			</div>
 		</nav>
@@ -122,13 +116,7 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
-			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+						<a class="github" target="_blank" href="https://github.com/Guofuyinan" title="github"><i class="icon-github"></i></a>
 			        
 				</div>
 			</nav>
@@ -178,6 +166,8 @@
 <p>==是运算符，用于比较两个变量是否相等。</p>
 <p>equals，是Objec类的方法，用于比较两个对象是否相等，默认Object类的equals方法是比较两个对象的地址，跟==的结果一样。Object的equals方法如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">this</span> == obj);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
 
 <p>hashCode也是Object类的一个方法。返回一个离散的int型整数。在集合类操作中使用，为了提高查询速度。（HashMap，HashSet等）</p>
 <p>有了这三个基础概念，区别就简单了。</p>
@@ -351,7 +341,7 @@
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
-		open_in_new: false,
+		open_in_new: true,
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
