@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="郭付一男的Hexo博客">
 <meta property="og:description" content="Keep Working">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="郭付一男">
+<meta property="article:author" content="郭付一�?">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="郭付一男的Hexo博客" type="application/atom+xml">
@@ -48,7 +48,7 @@
 			<img src="/img/1.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">郭付一男</a></h1>
+		  <h1 class="header-author"><a href="/">郭付一�?</a></h1>
 		</hgroup>
 		
 
@@ -100,7 +100,7 @@
 				<img src="/img/1.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">郭付一男</h1>
+			  <h1 class="header-author js-header-author">郭付一�?</h1>
 			</hgroup>
 			
 			
@@ -228,7 +228,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>HashMap在1.7和1.8做了一个比较大的改变，1.7使用的是==数组+链表==。他的数据节点是一个Entry节点，一个它的内部类，数据插入的过程使用一个==头插法==。头插法它在resize（扩容）的过程中在里面有一个resize的方法，它又调用了一个transfer方法，把里面的一些Entry进行了rehash。在这个过程中可能会造成一个链表的一个循环可能在下一次get的时候出现死循环的情况，因为他没有加锁，所以在多线程并发的情况下不能保证数据是安全的，就是我put进去的值，取出来还是我put进去的值。</p>
+        <p>HashMap在1.7和1.8做了一个比较大的改变。</p>
+<p>1.7使用的是==数组+链表==。他的数据节点是一个Entry节点，一个它的内部类，数据插入的过程使用一个==头插法==。头插法它在resize（扩容）的过程中在里面有一个resize的方法，它又调用了一个transfer方法，把里面的一些Entry进行了rehash。在这个过程中可能会造成一个链表的一个循环可能在下一次get的时候出现死循环的情况，因为他没有加锁，所以在多线程并发的情况下不能保证数据是安全的，就是我put进去的值，取出来还是我put进去的值。</p>
 <p>1.8使用的是 ==数组+链表+红黑树==，使用的是 ==尾插法==，没有改变他原来数据插入的数据，所以在这里不会出现链表循环的过程，线程同样不安全，把原来的Entry节点变成了Node节点，整个的put过程也进行了优化。</p>
         
       
@@ -348,7 +349,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2020 郭付一男
+    		&copy; 2020 郭付一�?
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
