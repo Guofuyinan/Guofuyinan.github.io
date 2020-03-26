@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>HashMap和TreeMap之间的选择 | 郭付一男的Hexo博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="介绍TreeMap的Key值是要求实现java.lang.Comparable，所以迭代的时候TreeMap默认是按照Key值升序排序的；TreeMap的实现是基于红黑树结构。适用于按自然顺序或自定义顺序遍历键（key）。 HashMap的Key值实现散列hashCode()，分布是散列的、均匀的，不支持排序；数据结构主要是桶(数组)，链表或红黑树。适用于在Map中插入、删除和定位元素。 结论如果">
+  <meta name="description" content="介绍TreeMap的Key值是要求实现java.lang.Comparable，所以迭代的时候TreeMap默认是按照Key值升序排序的；TreeMap的实现是基于红黑树结构。适用于按自然顺序或自定义顺序遍历键（key）。 HashMap的Key值实现散列hashCode()，分布是散列的、均匀的，不支持排序，数据结构主要是桶(数组)，链表或红黑树。适用于在Map中插入、删除和定位元素。 结论如果">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HashMap和TreeMap之间的选择">
 <meta property="og:url" content="http://yoursite.com/2020/03/26/HashMap%E5%92%8CTreeMap%E4%B9%8B%E9%97%B4%E7%9A%84%E9%80%89%E6%8B%A9/index.html">
 <meta property="og:site_name" content="郭付一男的Hexo博客">
-<meta property="og:description" content="介绍TreeMap的Key值是要求实现java.lang.Comparable，所以迭代的时候TreeMap默认是按照Key值升序排序的；TreeMap的实现是基于红黑树结构。适用于按自然顺序或自定义顺序遍历键（key）。 HashMap的Key值实现散列hashCode()，分布是散列的、均匀的，不支持排序；数据结构主要是桶(数组)，链表或红黑树。适用于在Map中插入、删除和定位元素。 结论如果">
+<meta property="og:description" content="介绍TreeMap的Key值是要求实现java.lang.Comparable，所以迭代的时候TreeMap默认是按照Key值升序排序的；TreeMap的实现是基于红黑树结构。适用于按自然顺序或自定义顺序遍历键（key）。 HashMap的Key值实现散列hashCode()，分布是散列的、均匀的，不支持排序，数据结构主要是桶(数组)，链表或红黑树。适用于在Map中插入、删除和定位元素。 结论如果">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-03-26T06:21:23.923Z">
-<meta property="article:modified_time" content="2020-03-26T07:09:12.669Z">
+<meta property="article:modified_time" content="2020-03-26T08:37:30.726Z">
 <meta property="article:author" content="郭付一男">
 <meta name="twitter:card" content="summary">
   
@@ -163,7 +163,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p><code>TreeMap</code>的Key值是要求实现<code>java.lang.Comparable</code>，所以迭代的时候TreeMap默认是按照Key值升序排序的；TreeMap的实现是基于红黑树结构。适用于按自然顺序或自定义顺序遍历键（key）。</p>
-<p><code>HashMap</code>的Key值实现散列<code>hashCode()</code>，分布是散列的、均匀的，不支持排序；数据结构主要是桶(数组)，链表或红黑树。适用于在Map中插入、删除和定位元素。</p>
+<p><code>HashMap</code>的Key值实现散列<code>hashCode()</code>，分布是散列的、均匀的，不支持排序，数据结构主要是桶(数组)，链表或红黑树。适用于在Map中插入、删除和定位元素。</p>
 <h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>如果你需要得到一个有序的结果时就应该使用TreeMap（因为HashMap中元素的排列顺序是不固定的）。除此之</p>
 <a id="more"></a>
 
