@@ -142,6 +142,74 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Java中的各种集合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/27/Java%E4%B8%AD%E7%9A%84%E5%90%84%E7%A7%8D%E9%9B%86%E5%90%88/">Java中的各种集合</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/27/Java%E4%B8%AD%E7%9A%84%E5%90%84%E7%A7%8D%E9%9B%86%E5%90%88/" class="archive-article-date">
+  	<time datetime="2020-03-27T15:57:52.342Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<hr>
+<h3 id="1-HashMap和HashTable的区别？"><a href="#1-HashMap和HashTable的区别？" class="headerlink" title="1.HashMap和HashTable的区别？"></a>1.HashMap和HashTable的区别？</h3><p><strong>HashMap 不是线程安全的</strong></p>
+<p>HashMap 是 map 接口的实现类，是将键映射到值的对象，其中键和值都是对象，并且不能包含重复键，但可以包含重复值。HashMap 允许 null key 和 null value，而 HashTable 不允许。</p>
+<p><strong>HashTable 是线程安全的</strong></p>
+<p>HashMap 是 HashTable 的轻量级实现，他们都完成了Map 接口，主要区别在于 HashMap 允许 null key 和 null value,由于非线程安全，效率上可能高于 Hashtable。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/27/Java%E4%B8%AD%E7%9A%84%E5%90%84%E7%A7%8D%E9%9B%86%E5%90%88/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Object中的13个方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -380,71 +448,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/03/25/==%E3%80%81equals%E5%92%8CHashCode%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-HashMap特性和源码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/21/HashMap%E7%89%B9%E6%80%A7%E5%92%8C%E6%BA%90%E7%A0%81/">HashMap特性和源码</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/21/HashMap%E7%89%B9%E6%80%A7%E5%92%8C%E6%BA%90%E7%A0%81/" class="archive-article-date">
-  	<time datetime="2020-03-21T04:55:23.359Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>HashMap在1.7和1.8做了一个比较大的改变。</p>
-<p>1.7使用的是==数组+链表==。他的数据节点是一个Entry节点，一个它的内部类，数据插入的过程使用一个==头插法==。头插法它在resize（扩容）的过程中在里面有一个resize的方法，它又调用了一个transfer方法，把里面的一些Entry进行了rehash。在这个过程中可能会造成一个链表的一个循环可能在下一次get的时候出现死循环的情况，因为他没有加锁，所以在多线程并发的情况下不能保证数据是安全的，就是我put进去的值，取出来还是我put进去的值。</p>
-<p>1.8使用的是 ==数组+链表+红黑树==，使用的是 ==尾插法==。没有改变他原来数据插入的数据，所以在这里不会出现链表</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/21/HashMap%E7%89%B9%E6%80%A7%E5%92%8C%E6%BA%90%E7%A0%81/">展开全文 >></a>
         </p>
       
 
