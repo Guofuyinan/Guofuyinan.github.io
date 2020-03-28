@@ -15,12 +15,12 @@
 <meta property="og:site_name" content="郭付一男的Hexo博客">
 <meta property="og:description" content="Java语言是一种单继承结构语言，Java中所有的类都有一个共同的祖先。这个祖先就是Object类。 如果一个类没有用extends明确指出继承于某个类，那么它默认继承Object类。  分析Object类是Java中所有类的基类。位于java.lang包中，一共有13个方法。如下图：">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/8KKrHK5ic6XC97BDOiblPU3PjicVfd5IIXibJr1EPadLZ2U28FVeSfBEpDhmYwHHiceviaxzZvOZX99Z8BZWehcSiaupA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="http://yoursite.com/2020/03/27/images/2.png">
 <meta property="article:published_time" content="2020-03-27T08:36:11.709Z">
-<meta property="article:modified_time" content="2020-03-27T08:42:14.366Z">
+<meta property="article:modified_time" content="2020-03-28T02:53:06.381Z">
 <meta property="article:author" content="郭付一男">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/8KKrHK5ic6XC97BDOiblPU3PjicVfd5IIXibJr1EPadLZ2U28FVeSfBEpDhmYwHHiceviaxzZvOZX99Z8BZWehcSiaupA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/27/images/2.png">
   
     <link rel="alternative" href="/atom.xml" title="郭付一男的Hexo博客" type="application/atom+xml">
   
@@ -171,7 +171,7 @@
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>Object类是Java中所有类的基类。位于java.lang包中，一共有13个方法。如下图：</p>
 <a id="more"></a>
 
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/8KKrHK5ic6XC97BDOiblPU3PjicVfd5IIXibJr1EPadLZ2U28FVeSfBEpDhmYwHHiceviaxzZvOZX99Z8BZWehcSiaupA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<p><img src="../images/2.png" alt="img"></p>
 <h2 id="具体解答"><a href="#具体解答" class="headerlink" title="具体解答"></a>具体解答</h2><h3 id="1-Object"><a href="#1-Object" class="headerlink" title="1.Object()"></a>1.Object()</h3><p>Object类的构造方法。</p>
 <h3 id="2-registerNatives"><a href="#2-registerNatives" class="headerlink" title="2.registerNatives()"></a>2.registerNatives()</h3><p>为了使JVM发现本机功能，他们被一定的方式命名。例如，对于java.lang.Object.registerNatives，对应的C函数命名为Java_java_lang_Object_registerNatives。</p>
 <p>通过使用registerNatives（或者更确切地说，JNI函数RegisterNatives），可以命名任何你想要你的C函数。</p>
