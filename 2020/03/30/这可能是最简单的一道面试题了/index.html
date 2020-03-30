@@ -6,21 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>单例模式的几种写法 | 郭付一男的Hexo博客</title>
+  <title>这可能是最简单的一道面试题了 | 郭付一男的Hexo博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这里讲解几种笔者常用的写法，但切忌生搬硬套，去记“茴香豆的写法”。编程最大的乐趣在于“know everything, control everything”。  JDK版本： java 1.8.0_102  大体可分为4类，下面分别介绍他们的基本形式、变种及特点。 单例模式三部曲：1.私有的构造方法， 2.公开的静态的外部获取实例的方法，">
+  <meta name="description" content="偶然在论坛上看到一篇文章很有感觉，特此记录，这篇文章来自网络！！！这可能是历史上最简单的一道java面试题了。 题目很简单，完成代码，判断一个整数是否是奇数： 1public boolean isOdd(int i)  相信相当数量的人都已经在准备吐槽了，只要看过《编程珠玑》的人都知道这道题的答案和其中极为简单的道理。不过别着急骂街，不管你信不信，这道笔试题我拿到的答案好多都长这样：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="单例模式的几种写法">
-<meta property="og:url" content="http://yoursite.com/2020/03/27/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%87%A0%E7%A7%8D%E5%86%99%E6%B3%95/index.html">
+<meta property="og:title" content="这可能是最简单的一道面试题了">
+<meta property="og:url" content="http://yoursite.com/2020/03/30/%E8%BF%99%E5%8F%AF%E8%83%BD%E6%98%AF%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E4%B8%80%E9%81%93%E9%9D%A2%E8%AF%95%E9%A2%98%E4%BA%86/index.html">
 <meta property="og:site_name" content="郭付一男的Hexo博客">
-<meta property="og:description" content="这里讲解几种笔者常用的写法，但切忌生搬硬套，去记“茴香豆的写法”。编程最大的乐趣在于“know everything, control everything”。  JDK版本： java 1.8.0_102  大体可分为4类，下面分别介绍他们的基本形式、变种及特点。 单例模式三部曲：1.私有的构造方法， 2.公开的静态的外部获取实例的方法，">
+<meta property="og:description" content="偶然在论坛上看到一篇文章很有感觉，特此记录，这篇文章来自网络！！！这可能是历史上最简单的一道java面试题了。 题目很简单，完成代码，判断一个整数是否是奇数： 1public boolean isOdd(int i)  相信相当数量的人都已经在准备吐槽了，只要看过《编程珠玑》的人都知道这道题的答案和其中极为简单的道理。不过别着急骂街，不管你信不信，这道笔试题我拿到的答案好多都长这样：">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/images/1.png">
-<meta property="article:published_time" content="2020-03-27T06:45:25.698Z">
-<meta property="article:modified_time" content="2020-03-28T02:51:01.724Z">
+<meta property="article:published_time" content="2020-03-30T02:48:00.615Z">
+<meta property="article:modified_time" content="2020-03-29T05:05:18.252Z">
 <meta property="article:author" content="郭付一男">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/1.png">
   
     <link rel="alternative" href="/atom.xml" title="郭付一男的Hexo博客" type="application/atom+xml">
   
@@ -144,85 +142,87 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-单例模式的几种写法" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-这可能是最简单的一道面试题了" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      单例模式的几种写法
+      这可能是最简单的一道面试题了
     </h1>
   
 
         
-        <a href="/2020/03/27/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%87%A0%E7%A7%8D%E5%86%99%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2020-03-27T06:45:25.698Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-27</time>
+        <a href="/2020/03/30/%E8%BF%99%E5%8F%AF%E8%83%BD%E6%98%AF%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E4%B8%80%E9%81%93%E9%9D%A2%E8%AF%95%E9%A2%98%E4%BA%86/" class="archive-article-date">
+  	<time datetime="2020-03-30T02:48:00.615Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-30</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这里讲解几种笔者常用的写法，但切忌生搬硬套，去记“茴香豆的写法”。编程最大的乐趣在于“know everything, control everything”。</p>
-<blockquote>
-<p>JDK版本： java 1.8.0_102</p>
-</blockquote>
-<p>大体可分为4类，下面分别介绍他们的基本形式、变种及特点。</p>
-<h5 id="单例模式三部曲："><a href="#单例模式三部曲：" class="headerlink" title="单例模式三部曲："></a>单例模式三部曲：</h5><p>1.私有的构造方法，</p>
-<p>2.公开的静态的外部获取实例的方法，</p>
+        <h3 id="偶然在论坛上看到一篇文章很有感觉，特此记录，这篇文章来自网络！！！"><a href="#偶然在论坛上看到一篇文章很有感觉，特此记录，这篇文章来自网络！！！" class="headerlink" title="偶然在论坛上看到一篇文章很有感觉，特此记录，这篇文章来自网络！！！"></a>偶然在论坛上看到一篇文章很有感觉，特此记录，这篇文章来自网络！！！</h3><p>这可能是历史上最简单的一道java面试题了。</p>
+<p>题目很简单，完成代码，判断一个整数是否是奇数：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isOdd</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br></pre></td></tr></table></figure>
+
+<p>相信相当数量的人都已经在准备吐槽了，只要看过《编程珠玑》的人都知道这道题的答案和其中极为简单的道理。不过别着急骂街，不管你信不信，这道笔试题我拿到的答案好多都长这样：</p>
 <a id="more"></a>
 
-<p>3.该类型的静态成员变量。</p>
-<h2 id="饱汉模式"><a href="#饱汉模式" class="headerlink" title="饱汉模式"></a>饱汉模式</h2><p>饱汉是变种最多的单例模式。我们从饱汉出发，通过其变种逐渐了解实现单例模式时需要关注的问题。</p>
-<h4 id="基础的饱汉"><a href="#基础的饱汉" class="headerlink" title="基础的饱汉"></a>基础的饱汉</h4><p>饱汉，即已经吃饱，不着急再吃，饿的时候再吃。所以他就先不初始化单例，等第一次使用的时候再初始化，即“懒加载”。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 饱汉</span></span><br><span class="line"><span class="comment">// UnThreadSafe</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton1</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> Singleton1 singleton = <span class="keyword">null</span>;<span class="comment">//系统默认初始值，可省略</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Singleton1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton1 <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (singleton == <span class="keyword">null</span>) &#123;</span><br><span class="line">      singleton = <span class="keyword">new</span> Singleton1();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> singleton;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isOdd</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (i % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">        System.out.println(<span class="string">"是奇数"</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"是偶数"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>饱汉模式的核心就是懒加载。好处是更启动速度快、节省资源，一直到实例被第一次访问，才需要初始化单例；小坏处是写起来麻烦，大坏处是 <strong>线程不安全</strong>，if语句存在竞态条件。</p>
-<p>写起来麻烦不是大问题，可读性好啊。因此，单线程环境下，基础饱汉是笔者最喜欢的写法。但多线程环境下，基础饱汉就彻底不可用了。下面的几种变种都在试图解决基础饱汉线程不安全的问题。</p>
-<h4 id="饱汉-变种-1"><a href="#饱汉-变种-1" class="headerlink" title="饱汉 - 变种 1"></a>饱汉 - 变种 1</h4><p>最粗暴的犯法是用synchronized关键字修饰getInstance()方法，这样能达到绝对的线程安全。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 饱汉</span></span><br><span class="line"><span class="comment">// ThreadSafe</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton1_1</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> Singleton1_1 singleton = <span class="keyword">null</span>;</span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Singleton1_1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">static</span> Singleton1_1 <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (singleton == <span class="keyword">null</span>) &#123;</span><br><span class="line">      singleton = <span class="keyword">new</span> Singleton1_1();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> singleton;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后编译一下，发现错误了，挠挠头，顶多改成这样：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isOdd</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (i % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>变种1的好处是写起来简单，且绝对线程安全；坏处是并发性能极差，事实上完全退化到了串行。单例只需要初始化一次，但就算初始化以后，synchronized的锁也无法避开，从而getInstance()完全变成了串行操作。性能不敏感的场景建议使用。</p>
-<h4 id="饱汉-变种-2"><a href="#饱汉-变种-2" class="headerlink" title="饱汉 - 变种 2"></a>饱汉 - 变种 2</h4><p>变种2是“臭名昭著”的DCL 1.0。</p>
-<p>针对变种1中单例初始化后锁仍然无法避开的问题，变种2在变种1的外层又套了一层check，加上synchronized内层的check，即所谓“双重检查锁”（Double Check Lock，简称DCL）。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 饱汉</span></span><br><span class="line"><span class="comment">// UnThreadSafe</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton1_2</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> Singleton1_2 singleton = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">int</span> f1 = <span class="number">1</span>;   <span class="comment">// 触发部分初始化问题</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">int</span> f2 = <span class="number">2</span>;</span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Singleton1_2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton1_2 <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// may get half object</span></span><br><span class="line">    <span class="keyword">if</span> (singleton == <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">synchronized</span> (Singleton1_2<span class="class">.<span class="keyword">class</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (singleton == <span class="keyword">null</span>) &#123;</span><br><span class="line">          singleton = <span class="keyword">new</span> Singleton1_2();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> singleton;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>好吧，我承认我在筛选简历的能力可能有一些问题，不过不管你信不信，好多大厂工作了几年的程序员，都会写出如上风格的代码。</p>
+<p>于是我继续进行引导：</p>
+<p>我：“这个函数的定义要求返回一个什么类型的值？”</p>
+<p>候选人看了看题干：“布尔类型。”</p>
+<p>我：“那么，你if后面的括号里面的表达式的值是一个什么类型的？”</p>
+<p>引导到这一步的时候，依然有高达两成的候选人选择了放弃，表示他们不知道。好吧，我真的不知道你们来面试这个职位的信心何在。不过大部分人想了想，还会回答出正确答案：</p>
+<p>候选人：“也是布尔类型。”</p>
+<p>我：“然后呢？”</p>
+<p>有少量候选人虽然没说出来，但是我能看出来他们觉得这只是一个巧合，并不知道怎么进行下一步。不过，大多数人想了想之后，还是会优化成如下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isOdd</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (i % <span class="number">2</span>) == <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>变种2的核心是DCL，看起来变种2似乎已经达到了理想的效果：懒加载+线程安全。可惜的是，正如注释中所说，DCL仍然是线程不安全的，由于指令重排序，你可能会得到“半个对象”，即”部分初始化“问题。</p>
-<h4 id="饱汉-变种-3"><a href="#饱汉-变种-3" class="headerlink" title="饱汉 - 变种 3"></a>饱汉 - 变种 3</h4><p>变种3专门针对变种2，可谓DCL 2.0。</p>
-<p>针对变种3的“半个对象”问题，变种3在instance上增加了volatile关键字。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 饱汉</span></span><br><span class="line"><span class="comment">// ThreadSafe</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton1_3</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> Singleton1_3 singleton = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">int</span> f1 = <span class="number">1</span>;   <span class="comment">// 触发部分初始化问题</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">int</span> f2 = <span class="number">2</span>;</span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Singleton1_3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton1_3 <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (singleton == <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">synchronized</span> (Singleton1_3<span class="class">.<span class="keyword">class</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// must be a complete instance</span></span><br><span class="line">        <span class="keyword">if</span> (singleton == <span class="keyword">null</span>) &#123;</span><br><span class="line">          singleton = <span class="keyword">new</span> Singleton1_3();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> singleton;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>终于过了第一关了，进行第二关的引导：</p>
+<p>我：“那我传进来一个-1呢？”</p>
+<p>将近一半的人在想了想之后会嘴硬地表示他们从小被教导只有自然数才有奇数偶数之分，负数没有奇偶这一说。剩余的人接受了这个设定，想了一会儿，改成这样：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isOdd</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (i % <span class="number">2</span>) == <span class="number">1</span> || (i % <span class="number">2</span>) == -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>多线程环境下，变种3更适用于性能敏感的场景。但后面我们将了解到，就算是线程安全的，还有一些办法能破坏单例。</p>
-<p>当然，还有很多方式，能通过与volatile类似的方式防止部分初始化。</p>
-<h2 id="饿汉模式"><a href="#饿汉模式" class="headerlink" title="饿汉模式"></a>饿汉模式</h2><p>与饱汉相对，饿汉很饿，只想着尽早吃到。所以他就在最早的时机，即类加载时初始化单例，以后访问时直接返回即可。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 饿汉</span></span><br><span class="line"><span class="comment">// ThreadSafe</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton2</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton2 singleton = <span class="keyword">new</span> Singleton2();</span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Singleton2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton2 <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> singleton;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>并且在提示之后优化成这样：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isOdd</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> i % <span class="number">2</span> != <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>饿汉的好处是天生的线程安全（得益于类加载机制），写起来超级简单，使用时没有延迟；坏处是有可能造成资源浪费（如果类加载后就一直不使用单例的话）。</p>
-<blockquote>
-<p>值得注意的时，单线程环境下，饿汉与饱汉在性能上没什么差别；但多线程环境下，由于饱汉需要加锁，饿汉的性能反而更优。</p>
-</blockquote>
-<h2 id="Holder模式"><a href="#Holder模式" class="headerlink" title="Holder模式"></a>Holder模式</h2><p>我们既希望利用饿汉模式中静态变量的方便和线程安全；又希望通过懒加载规避资源浪费。Holder模式满足了这两点要求：核心仍然是静态变量，足够方便和线程安全；通过静态的Holder类持有真正实例，间接实现了懒加载。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Holder模式</span></span><br><span class="line"><span class="comment">// ThreadSafe</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton3</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonHolder</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton3 singleton = <span class="keyword">new</span> Singleton3();</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SingletonHolder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Singleton3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 勘误：多写了个synchronized。。</span></span><br><span class="line"><span class="comment">  public synchronized static Singleton3 getInstance() &#123;</span></span><br><span class="line"><span class="comment">    return SingletonHolder.singleton;</span></span><br><span class="line"><span class="comment">  &#125;</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton3 <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> SingletonHolder.singleton;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>好吧，这是迄今为止第一个能通过编译且完全满足了需求的代码实现了。说实话，一开始就写成这样的人，如果没有其他什么明显的缺点的话，我这里基本就能通过了。我承认我的要求比较低，但是来面试的人能直接写出这样的真的不太多，粗略地估计的话，大概占一到两成吧。</p>
+<p>但是这里还没完呢，还有最重要的第三关呢：</p>
+<p>我：“有更好的办法吗？”</p>
+<p>候选人：“？”</p>
+<p>我：“我觉得取模操作比较慢，有更快的解决方案吗？”</p>
+<p>除了少数人能自己想想就想出来了之外，绝大部分（毫不夸张）候选人表示没有或者不知道，于是进行下一步提示：</p>
+<p>我：“奇数和偶数转换成二进制有什么区别？”</p>
+<p>相当一部分候选人表示自己不懂什么叫二进制和位运算，有的还表示java不是c语言，不用研究这些，就跟很多评论会吐槽我在装逼一样。少部分候选人想了想，会怯怯地回答。</p>
+<p>候选人：“奇数最后一位是1，偶数最后一位是0。”</p>
+<p>我：“然后呢？”</p>
+<p>这里很奇怪的点是，大部分能聊到这里来的候选人会想起来移位操作，我真的不知道是为什么，虽然这道题确实可以有这种操作：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isOdd</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> i &gt;&gt; <span class="number">1</span> &lt;&lt; <span class="number">1</span> != i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>相对于饿汉模式，Holder模式仅增加了一个静态内部类的成本，与饱汉的变种3效果相当（略优），都是比较受欢迎的实现方式。同样建议考虑。</p>
-<h2 id="枚举模式"><a href="#枚举模式" class="headerlink" title="枚举模式"></a>枚举模式</h2><p>用枚举实现单例模式，相当好用，但可读性是不存在的。</p>
-<h4 id="基础的枚举"><a href="#基础的枚举" class="headerlink" title="基础的枚举"></a>基础的枚举</h4><p>将枚举的静态成员变量作为单例的实例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 枚举</span></span><br><span class="line"><span class="comment">// ThreadSafe</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Singleton4 &#123;</span><br><span class="line">  SINGLETON;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是这根本不是重点好吧！！！</p>
+<p>总之，无论如何，能在第三关的各种引导之后，能写出下面这个结果来的人，真的不多。能一开始没有任何引导的就写出来的人，至今只见过两个，一个我去哪儿都带着，一个拒了我的offer。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isOdd</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (i &amp; <span class="number">1</span>) == <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>代码量比饿汉模式更少。但用户只能直接访问实例Singleton4.SINGLETON——事实上，这样的访问方式作为单例使用也是恰当的，只是牺牲了静态工厂方法的优点，如无法实现懒加载。</p>
-<h2 id="丑陋但好用的语法糖"><a href="#丑陋但好用的语法糖" class="headerlink" title="丑陋但好用的语法糖"></a>丑陋但好用的语法糖</h2><p>Java的枚举是一个“丑陋但好用的语法糖”。</p>
-<h4 id="枚举型单例模式的本质"><a href="#枚举型单例模式的本质" class="headerlink" title="枚举型单例模式的本质"></a>枚举型单例模式的本质</h4><p>通过反编译打开语法糖，就看到了枚举类型的本质，简化如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 枚举</span></span><br><span class="line"><span class="comment">// ThreadSafe</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton4</span> <span class="keyword">extends</span> <span class="title">Enum</span>&lt;<span class="title">Singleton4</span>&gt; </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton4 SINGLETON = <span class="keyword">new</span> Singleton4();</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>本质上和饿汉模式相同，区别仅在于公有的静态成员变量。</p>
-<h4 id="用枚举实现一些trick"><a href="#用枚举实现一些trick" class="headerlink" title="用枚举实现一些trick"></a>用枚举实现一些trick</h4><p>上面已经看到，枚举型单例的本质仍然是一个普通的类。实际上，我们可以在枚举型型单例上增加任何普通类可以完成的功能。要点在于枚举实例的初始化，可以理解为实例化了一个匿名内部类。为了更明显，我们在Singleton4_1中定义一个普通的私有成员变量，一个普通的公有成员方法，和一个公有的抽象成员方法，如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 枚举</span></span><br><span class="line"><span class="comment">// ThreadSafe</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Singleton4_1 &#123;</span><br><span class="line">  SINGLETON(<span class="string">"enum is the easiest singleton pattern, but not the most readable"</span>) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testAbsMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      print();</span><br><span class="line">      System.out.println(<span class="string">"enum is ugly, but so flexible to make lots of trick"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">private</span> String comment = <span class="keyword">null</span>;</span><br><span class="line">  Singleton4_1(String comment) &#123;</span><br><span class="line">    <span class="keyword">this</span>.comment = comment;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"comment="</span> + comment);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">abstract</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testAbsMethod</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton4_1 <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> SINGLETON;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样，枚举类Singleton4_1中的每一个枚举实例不仅继承了父类Singleton4_1的成员方法print()，还必须实现父类Singleton4_1的抽象成员方法testAbsMethod()。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>上面的分析都忽略了反射和序列化的问题。通过反射或序列化，我们仍然能够访问到私有构造器，创建新的实例破坏单例模式。此时，只有枚举模式能天然防范这一问题。</p>
-<p>下面继续忽略反射和序列化的问题，做个总结回味一下：</p>
-<p><img src="/images/1.png" alt=""></p>
+<p>别以为这就完了！终极boss来了：</p>
+<p>我：“这样是不是比上面取模运算要快？”</p>
+<p>候选人：“那当然了，位运算肯定快啊。”</p>
+<p>我：“但是我们实际代码测试过，发现上面的按位与操作和取模操作，实际运行的时间是差不多的，为什么呢？”</p>
+<p>候选人心里mmp：“闹了半天你这是在逗我玩啊？？？”</p>
+<p>然而真正能回答出原因来的人，面试过程中我没见过，可能是大牛都看不上我所在的公司吧。只有在某公司的时候，一个同事想了想，给出了我正确答案。</p>
+<p>难道是我经历的公司都太low了么……</p>
+<hr>
+<hr>
+<p>在上述故事中，作者并没有给出最后的答案，我在查阅了一些资料和博客之后：</p>
+<p><strong>编译器会将对2的指数的取模操作，优化成位运算操作。</strong></p>
+<p>大家加油！还有很多要努力补足的地方。</p>
+<p>学习有时候不在于快，稳一点才能走的更远，慢一点才能走的更快，一起共勉！</p>
 
       
 
@@ -302,7 +302,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/27/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%87%A0%E7%A7%8D%E5%86%99%E6%B3%95/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/30/%E8%BF%99%E5%8F%AF%E8%83%BD%E6%98%AF%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E4%B8%80%E9%81%93%E9%9D%A2%E8%AF%95%E9%A2%98%E4%BA%86/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -316,18 +316,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/03/27/Object%E4%B8%AD%E7%9A%8413%E4%B8%AA%E6%96%B9%E6%B3%95/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Object中的13个方法
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/03/26/HashMap%E5%92%8CTreeMap%E4%B9%8B%E9%97%B4%E7%9A%84%E9%80%89%E6%8B%A9/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">HashMap和TreeMap之间的选择</div>
+    <a href="/2020/03/30/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%87%A0%E7%A7%8D%E5%86%99%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">单例模式的几种写法</div>
       <i class="icon-circle-right"></i>
     </a>
   

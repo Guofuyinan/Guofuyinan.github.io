@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>这可能是最简单的一道面试题了 | 郭付一男的Hexo博客</title>
+  <title>HashMap和TreeMap之间的选择 | 郭付一男的Hexo博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="偶然在论坛上看到一篇文章很有感觉，特此记录，这篇文章来自网络！！！这可能是历史上最简单的一道java面试题了。 题目很简单，完成代码，判断一个整数是否是奇数： 1public boolean isOdd(int i)  相信相当数量的人都已经在准备吐槽了，只要看过《编程珠玑》的人都知道这道题的答案和其中极为简单的道理。不过别着急骂街，不管你信不信，这道笔试题我拿到的答案好多都长这样：">
+  <meta name="description" content="介绍TreeMap的Key值是要求实现java.lang.Comparable，所以迭代的时候TreeMap默认是按照Key值升序排序的；TreeMap的实现是基于红黑树结构。适用于按自然顺序或自定义顺序遍历键（key）。 HashMap的Key值实现散列hashCode()，分布是散列的、均匀的，不支持排序，数据结构主要是桶(数组)，链表或红黑树。适用于在Map中插入、删除和定位元素。 结论如果">
 <meta property="og:type" content="article">
-<meta property="og:title" content="这可能是最简单的一道面试题了">
-<meta property="og:url" content="http://yoursite.com/2020/03/28/%E8%BF%99%E5%8F%AF%E8%83%BD%E6%98%AF%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E4%B8%80%E9%81%93%E9%9D%A2%E8%AF%95%E9%A2%98%E4%BA%86/index.html">
+<meta property="og:title" content="HashMap和TreeMap之间的选择">
+<meta property="og:url" content="http://yoursite.com/2020/03/30/HashMap%E5%92%8CTreeMap%E4%B9%8B%E9%97%B4%E7%9A%84%E9%80%89%E6%8B%A9/index.html">
 <meta property="og:site_name" content="郭付一男的Hexo博客">
-<meta property="og:description" content="偶然在论坛上看到一篇文章很有感觉，特此记录，这篇文章来自网络！！！这可能是历史上最简单的一道java面试题了。 题目很简单，完成代码，判断一个整数是否是奇数： 1public boolean isOdd(int i)  相信相当数量的人都已经在准备吐槽了，只要看过《编程珠玑》的人都知道这道题的答案和其中极为简单的道理。不过别着急骂街，不管你信不信，这道笔试题我拿到的答案好多都长这样：">
+<meta property="og:description" content="介绍TreeMap的Key值是要求实现java.lang.Comparable，所以迭代的时候TreeMap默认是按照Key值升序排序的；TreeMap的实现是基于红黑树结构。适用于按自然顺序或自定义顺序遍历键（key）。 HashMap的Key值实现散列hashCode()，分布是散列的、均匀的，不支持排序，数据结构主要是桶(数组)，链表或红黑树。适用于在Map中插入、删除和定位元素。 结论如果">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-03-28T05:46:25.245Z">
-<meta property="article:modified_time" content="2020-03-29T05:05:18.252Z">
+<meta property="article:published_time" content="2020-03-30T02:48:00.600Z">
+<meta property="article:modified_time" content="2020-03-26T08:37:30.726Z">
 <meta property="article:author" content="郭付一男">
 <meta name="twitter:card" content="summary">
   
@@ -142,87 +142,70 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-这可能是最简单的一道面试题了" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-HashMap和TreeMap之间的选择" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      这可能是最简单的一道面试题了
+      HashMap和TreeMap之间的选择
     </h1>
   
 
         
-        <a href="/2020/03/28/%E8%BF%99%E5%8F%AF%E8%83%BD%E6%98%AF%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E4%B8%80%E9%81%93%E9%9D%A2%E8%AF%95%E9%A2%98%E4%BA%86/" class="archive-article-date">
-  	<time datetime="2020-03-28T05:46:25.245Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-28</time>
+        <a href="/2020/03/30/HashMap%E5%92%8CTreeMap%E4%B9%8B%E9%97%B4%E7%9A%84%E9%80%89%E6%8B%A9/" class="archive-article-date">
+  	<time datetime="2020-03-30T02:48:00.600Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-30</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="偶然在论坛上看到一篇文章很有感觉，特此记录，这篇文章来自网络！！！"><a href="#偶然在论坛上看到一篇文章很有感觉，特此记录，这篇文章来自网络！！！" class="headerlink" title="偶然在论坛上看到一篇文章很有感觉，特此记录，这篇文章来自网络！！！"></a>偶然在论坛上看到一篇文章很有感觉，特此记录，这篇文章来自网络！！！</h3><p>这可能是历史上最简单的一道java面试题了。</p>
-<p>题目很简单，完成代码，判断一个整数是否是奇数：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isOdd</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br></pre></td></tr></table></figure>
-
-<p>相信相当数量的人都已经在准备吐槽了，只要看过《编程珠玑》的人都知道这道题的答案和其中极为简单的道理。不过别着急骂街，不管你信不信，这道笔试题我拿到的答案好多都长这样：</p>
+        <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p><code>TreeMap</code>的Key值是要求实现<code>java.lang.Comparable</code>，所以迭代的时候TreeMap默认是按照Key值升序排序的；TreeMap的实现是基于红黑树结构。适用于按自然顺序或自定义顺序遍历键（key）。</p>
+<p><code>HashMap</code>的Key值实现散列<code>hashCode()</code>，分布是散列的、均匀的，不支持排序，数据结构主要是桶(数组)，链表或红黑树。适用于在Map中插入、删除和定位元素。</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>如果你需要得到一个有序的结果时就应该使用TreeMap（因为HashMap中元素的排列顺序是不固定的）。除此之</p>
 <a id="more"></a>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isOdd</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (i % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">        System.out.println(<span class="string">"是奇数"</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"是偶数"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>外，由于HashMap有更好的性能，所以大多不需要排序的时候我们会使用HashMap。</p>
+<h3 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h3><p><strong>1、HashMap 和 TreeMap 的实现</strong></p>
+<p><strong>HashMap：</strong>基于哈希表实现。使用HashMap要求添加的键类明确定义了<code>hashCode()</code>和<code>equals()</code>[可以重写<code>hashCode()</code>和<code>equals()</code>]，为了优化HashMap空间的使用，您可以调优初始容量和负载因子。</p>
+<ul>
+<li>HashMap(): 构建一个空的哈希映像</li>
+<li>HashMap(Map m): 构建一个哈希映像，并且添加映像m的所有映射</li>
+<li>HashMap(int initialCapacity): 构建一个拥有特定容量的空的哈希映像</li>
+<li>HashMap(int initialCapacity, float loadFactor): 构建一个拥有特定容量和加载因子的空的哈希映像</li>
+</ul>
+<p><strong>TreeMap：</strong>基于红黑树实现。TreeMap没有调优选项，因为该树总处于平衡状态。</p>
+<ul>
+<li>TreeMap()：构建一个空的映像树</li>
+<li>TreeMap(Map m): 构建一个映像树，并且添加映像m中所有元素</li>
+<li>TreeMap(Comparator c): 构建一个映像树，并且使用特定的比较器对关键字进行排序</li>
+<li>TreeMap(SortedMap s): 构建一个映像树，添加映像树s中所有映射，并且使用与有序映像s相同的比较器排序</li>
+</ul>
+<p><strong>2、HashMap 和 TreeMap 都是非线程安全</strong></p>
+<p>HashMap继承AbstractMap抽象类，TreeMap实现自SortedMap接口。</p>
+<p><strong>AbstractMap抽象类：</strong>覆盖了equals()和hashCode()方法以确保两个相等映射返回相同的哈希码。如果两个映射大小相等、包含同样的键且每个键在这两个映射中对应的值都相同，则这两个映射相等。映射的哈希码是映射元素哈希码的总和，其中每个元素是Map.Entry接口的一个实现。因此，不论映射内部顺序如何，两个相等映射会报告相同的哈希码。</p>
+<p><strong>SortedMap接口：</strong>它用来保持键的有序顺序。SortedMap接口为映像的视图(子集)，包括两个端点提供了访问方法。除了排序是作用于映射的键以外，处理SortedMap和处理SortedSet一样。添加到SortedMap实现类的元素必须实现Comparable接口，否则您必须给它的构造函数提供一个Comparator接口的实现。TreeMap类是它的唯一一个实现。</p>
+<p><strong>3、TreeMap中默认是按照升序进行排序的，如何让他降序</strong></p>
+<p>通过自定义的比较器来实现</p>
+<p>定义一个比较器类，实现Comparator接口，重写compare方法，有两个参数，这两个参数通过调用compareTo进行比较，而compareTo默认规则是：</p>
+<blockquote>
+<ul>
+<li>如果参数字符串等于此字符串，则返回 0 值；</li>
+<li>如果此字符串小于字符串参数，则返回一个小于 0 的值；</li>
+<li>如果此字符串大于字符串参数，则返回一个大于 0 的值。</li>
+</ul>
+</blockquote>
+<p>自定义比较器时，在返回时多添加了个负号，就将比较的结果以相反的形式返回，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MyComparator</span> <span class="keyword">implements</span> <span class="title">Comparator</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Object o1, Object o2)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">        String param1 = (String)o1;</span><br><span class="line">        String param2 = (String)o2;</span><br><span class="line">        <span class="keyword">return</span> -param1.compareTo(param2);</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>然后编译一下，发现错误了，挠挠头，顶多改成这样：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isOdd</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (i % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>之后，通过MyComparator类初始化一个比较器实例，将其作为参数传进TreeMap的构造方法中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MyComparator comparator = <span class="keyword">new</span> MyComparator();</span><br><span class="line"></span><br><span class="line">Map&lt;String,String&gt; map = <span class="keyword">new</span> TreeMap&lt;String,String&gt;(comparator);</span><br></pre></td></tr></table></figure>
 
-<p>好吧，我承认我在筛选简历的能力可能有一些问题，不过不管你信不信，好多大厂工作了几年的程序员，都会写出如上风格的代码。</p>
-<p>于是我继续进行引导：</p>
-<p>我：“这个函数的定义要求返回一个什么类型的值？”</p>
-<p>候选人看了看题干：“布尔类型。”</p>
-<p>我：“那么，你if后面的括号里面的表达式的值是一个什么类型的？”</p>
-<p>引导到这一步的时候，依然有高达两成的候选人选择了放弃，表示他们不知道。好吧，我真的不知道你们来面试这个职位的信心何在。不过大部分人想了想，还会回答出正确答案：</p>
-<p>候选人：“也是布尔类型。”</p>
-<p>我：“然后呢？”</p>
-<p>有少量候选人虽然没说出来，但是我能看出来他们觉得这只是一个巧合，并不知道怎么进行下一步。不过，大多数人想了想之后，还是会优化成如下代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isOdd</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (i % <span class="number">2</span>) == <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样，我们就可以使用自定义的比较器实现降序了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MapTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//初始化自定义比较器</span></span><br><span class="line">        MyComparator comparator = <span class="keyword">new</span> MyComparator();</span><br><span class="line">        <span class="comment">//初始化一个map集合</span></span><br><span class="line">        Map&lt;String,String&gt; map = <span class="keyword">new</span> TreeMap&lt;String,String&gt;(comparator);</span><br><span class="line">        <span class="comment">//存入数据</span></span><br><span class="line">        map.put(<span class="string">"a"</span>, <span class="string">"a"</span>);</span><br><span class="line">        map.put(<span class="string">"b"</span>, <span class="string">"b"</span>);</span><br><span class="line">        map.put(<span class="string">"f"</span>, <span class="string">"f"</span>);</span><br><span class="line">        map.put(<span class="string">"d"</span>, <span class="string">"d"</span>);</span><br><span class="line">        map.put(<span class="string">"c"</span>, <span class="string">"c"</span>);</span><br><span class="line">        map.put(<span class="string">"g"</span>, <span class="string">"g"</span>);</span><br><span class="line">        <span class="comment">//遍历输出</span></span><br><span class="line">        Iterator iterator = map.keySet().iterator();</span><br><span class="line">        <span class="keyword">while</span>(iterator.hasNext())&#123;</span><br><span class="line">            String key = (String)iterator.next();</span><br><span class="line">            System.out.println(map.get(key));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MyComparator</span> <span class="keyword">implements</span> <span class="title">Comparator</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Object o1, Object o2)</span> </span>&#123;</span><br><span class="line">            <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">            String param1 = (String)o1;</span><br><span class="line">            String param2 = (String)o2;</span><br><span class="line">            <span class="keyword">return</span> -param1.compareTo(param2);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>终于过了第一关了，进行第二关的引导：</p>
-<p>我：“那我传进来一个-1呢？”</p>
-<p>将近一半的人在想了想之后会嘴硬地表示他们从小被教导只有自然数才有奇数偶数之分，负数没有奇偶这一说。剩余的人接受了这个设定，想了一会儿，改成这样：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isOdd</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (i % <span class="number">2</span>) == <span class="number">1</span> || (i % <span class="number">2</span>) == -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>并且在提示之后优化成这样：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isOdd</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> i % <span class="number">2</span> != <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>好吧，这是迄今为止第一个能通过编译且完全满足了需求的代码实现了。说实话，一开始就写成这样的人，如果没有其他什么明显的缺点的话，我这里基本就能通过了。我承认我的要求比较低，但是来面试的人能直接写出这样的真的不太多，粗略地估计的话，大概占一到两成吧。</p>
-<p>但是这里还没完呢，还有最重要的第三关呢：</p>
-<p>我：“有更好的办法吗？”</p>
-<p>候选人：“？”</p>
-<p>我：“我觉得取模操作比较慢，有更快的解决方案吗？”</p>
-<p>除了少数人能自己想想就想出来了之外，绝大部分（毫不夸张）候选人表示没有或者不知道，于是进行下一步提示：</p>
-<p>我：“奇数和偶数转换成二进制有什么区别？”</p>
-<p>相当一部分候选人表示自己不懂什么叫二进制和位运算，有的还表示java不是c语言，不用研究这些，就跟很多评论会吐槽我在装逼一样。少部分候选人想了想，会怯怯地回答。</p>
-<p>候选人：“奇数最后一位是1，偶数最后一位是0。”</p>
-<p>我：“然后呢？”</p>
-<p>这里很奇怪的点是，大部分能聊到这里来的候选人会想起来移位操作，我真的不知道是为什么，虽然这道题确实可以有这种操作：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isOdd</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> i &gt;&gt; <span class="number">1</span> &lt;&lt; <span class="number">1</span> != i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>但是这根本不是重点好吧！！！</p>
-<p>总之，无论如何，能在第三关的各种引导之后，能写出下面这个结果来的人，真的不多。能一开始没有任何引导的就写出来的人，至今只见过两个，一个我去哪儿都带着，一个拒了我的offer。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isOdd</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (i &amp; <span class="number">1</span>) == <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>别以为这就完了！终极boss来了：</p>
-<p>我：“这样是不是比上面取模运算要快？”</p>
-<p>候选人：“那当然了，位运算肯定快啊。”</p>
-<p>我：“但是我们实际代码测试过，发现上面的按位与操作和取模操作，实际运行的时间是差不多的，为什么呢？”</p>
-<p>候选人心里mmp：“闹了半天你这是在逗我玩啊？？？”</p>
-<p>然而真正能回答出原因来的人，面试过程中我没见过，可能是大牛都看不上我所在的公司吧。只有在某公司的时候，一个同事想了想，给出了我正确答案。</p>
-<p>难道是我经历的公司都太low了么……</p>
-<hr>
-<hr>
-<p>在上述故事中，作者并没有给出最后的答案，我在查阅了一些资料和博客之后：</p>
-<p><strong>编译器会将对2的指数的取模操作，优化成位运算操作。</strong></p>
-<p>大家加油！还有很多要努力补足的地方。</p>
-<p>学习有时候不在于快，稳一点才能走的更远，慢一点才能走的更快，一起共勉！</p>
 
       
 
@@ -302,7 +285,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/28/%E8%BF%99%E5%8F%AF%E8%83%BD%E6%98%AF%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E4%B8%80%E9%81%93%E9%9D%A2%E8%AF%95%E9%A2%98%E4%BA%86/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/30/HashMap%E5%92%8CTreeMap%E4%B9%8B%E9%97%B4%E7%9A%84%E9%80%89%E6%8B%A9/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -316,18 +299,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/03/29/ClassNotFoundException%20%E5%92%8C%20NoClassDefFoundError%20%E7%9A%84%E5%8C%BA%E5%88%AB/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/03/30/HashMap%E7%89%B9%E6%80%A7%E5%92%8C%E6%BA%90%E7%A0%81/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          ClassNotFoundException 和 NoClassDefFoundError 的区别
+          HashMap特性和源码
         
       </div>
     </a>
   
   
-    <a href="/2020/03/27/Java%E4%B8%AD%E7%9A%84%E5%90%84%E7%A7%8D%E9%9B%86%E5%90%88/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java中的各种集合</div>
+    <a href="/2020/03/30/ClassNotFoundException%20%E5%92%8C%20NoClassDefFoundError%20%E7%9A%84%E5%8C%BA%E5%88%AB/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ClassNotFoundException 和 NoClassDefFoundError 的区别</div>
       <i class="icon-circle-right"></i>
     </a>
   
