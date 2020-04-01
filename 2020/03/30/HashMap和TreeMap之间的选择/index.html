@@ -16,7 +16,7 @@
 <meta property="og:description" content="介绍TreeMap的Key值是要求实现java.lang.Comparable，所以迭代的时候TreeMap默认是按照Key值升序排序的；TreeMap的实现是基于红黑树结构。适用于按自然顺序或自定义顺序遍历键（key）。 HashMap的Key值实现散列hashCode()，分布是散列的、均匀的，不支持排序，数据结构主要是桶(数组)，链表或红黑树。适用于在Map中插入、删除和定位元素。 结论如果">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-03-30T15:02:31.925Z">
-<meta property="article:modified_time" content="2020-03-26T08:37:30.726Z">
+<meta property="article:modified_time" content="2020-03-31T06:29:44.979Z">
 <meta property="article:author" content="郭付一男">
 <meta name="twitter:card" content="summary">
   
@@ -174,7 +174,7 @@
 <li>HashMap(): 构建一个空的哈希映像</li>
 <li>HashMap(Map m): 构建一个哈希映像，并且添加映像m的所有映射</li>
 <li>HashMap(int initialCapacity): 构建一个拥有特定容量的空的哈希映像</li>
-<li>HashMap(int initialCapacity, float loadFactor): 构建一个拥有特定容量和加载因子的空的哈希映像</li>
+<li>HashMap(int initialCapacity, float loadFactor): 构建一个拥有特定容量和负载因子的空的哈希映像</li>
 </ul>
 <p><strong>TreeMap：</strong>基于红黑树实现。TreeMap没有调优选项，因为该树总处于平衡状态。</p>
 <ul>
