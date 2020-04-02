@@ -142,6 +142,71 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-SpringMVC的控制器是单例的吗" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/02/SpringMVC%E7%9A%84%E6%8E%A7%E5%88%B6%E5%99%A8%E6%98%AF%E5%8D%95%E4%BE%8B%E7%9A%84%E5%90%97/">SpringMVC的控制器是单例的吗</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/02/SpringMVC%E7%9A%84%E6%8E%A7%E5%88%B6%E5%99%A8%E6%98%AF%E5%8D%95%E4%BE%8B%E7%9A%84%E5%90%97/" class="archive-article-date">
+  	<time datetime="2020-04-02T12:09:53.228Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>关于SpringMVC Controller单例和多例，下面举了个例子说明下.</p>
+<p><strong>第一次：类是多例，一个普通属性和一个静态属性。</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequsetMapping</span>(<span class="string">"/items"</span>)</span><br><span class="line"><span class="meta">@Scope</span>(value=<span class="string">"prototype"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ItemsController</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> staticIndex = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/02/SpringMVC%E7%9A%84%E6%8E%A7%E5%88%B6%E5%99%A8%E6%98%AF%E5%8D%95%E4%BE%8B%E7%9A%84%E5%90%97/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Java中的锁" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -397,73 +462,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/03/30/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%87%A0%E7%A7%8D%E5%86%99%E6%B3%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-前后端分离的利与弊" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/30/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E7%9A%84%E5%88%A9%E4%B8%8E%E5%BC%8A/">前后端分离的利与弊</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/30/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E7%9A%84%E5%88%A9%E4%B8%8E%E5%BC%8A/" class="archive-article-date">
-  	<time datetime="2020-03-30T15:02:31.985Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前后端分离这两年被炒得如火如荼。那你对前后端分离有什么理解，或者说你觉得一个项目应该如何去实施前后端分离。</p>
-<p>Vue.js？Rest接口规范？Ajax异步请求？等等…</p>
-<p><strong>在我看来这件事不应该已一个具体的技术来切入 不要理解与局限，不应该为了做前后端分离而去前后端分离。</strong></p>
-<p>JSP 一个典型的前后端耦合技术，全家上下一起套模板，套的死去活来。</p>
-<p>当下时代，互联网服务更加繁荣，需求层级更加高档，用户对前端展示的页面要求更高，JSP已经逐渐被社会趋势所淘汰，开发效率跟不上时代的进程使其逐渐没落。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/30/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E7%9A%84%E5%88%A9%E4%B8%8E%E5%BC%8A/">展开全文 >></a>
         </p>
       
 
