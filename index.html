@@ -142,6 +142,74 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ConcurrentHashMap是如何保证线程安全的" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/15/ConcurrentHashMap%E6%98%AF%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84/">ConcurrentHashMap是如何保证线程安全的</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/15/ConcurrentHashMap%E6%98%AF%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84/" class="archive-article-date">
+  	<time datetime="2020-04-15T15:44:39.524Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我们知道，ConcurrentHashmap(1.8)这个并发集合框架是线程安全的，当你看到源码的get操作时，会发现get操作全程是没有加任何锁的，这也是这篇博文讨论的问题——为什么它不需要加锁呢？</p>
+<h3 id="ConcurrentHashMap的简介"><a href="#ConcurrentHashMap的简介" class="headerlink" title="ConcurrentHashMap的简介"></a>ConcurrentHashMap的简介</h3><blockquote>
+<p>我想有基础的同学知道在jdk1.7中是采用Segment + HashEntry + ReentrantLock的方式进行实现的，而1.8中放弃了Segment臃肿的设计，取而代之的是采用Node + CAS + Synchronized来保证并发安全进行实现。</p>
+</blockquote>
+<ul>
+<li><p>JDK1.8的实现降低锁的粒度，JDK1.7版本锁的粒度是基于Segment的，包含多个HashEntry，而JDK1.8锁的粒度就是HashEntry（首节点）</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/15/ConcurrentHashMap%E6%98%AF%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Synchronized及实现原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -378,70 +446,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/04/09/MySQL%E8%A1%8C%E9%94%81%E5%92%8C%E8%A1%A8%E9%94%81%E7%9A%84%E5%90%AB%E4%B9%89%E5%8F%8A%E5%8C%BA%E5%88%AB/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-为什么要拆分数据库，有哪些方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/08/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%8B%86%E5%88%86%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%8C%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B9%E6%B3%95/">为什么要拆分数据库，有哪些方法</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/08/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%8B%86%E5%88%86%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%8C%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2020-04-08T07:39:22.844Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-为什么要拆分数据库？"><a href="#1-为什么要拆分数据库？" class="headerlink" title="1. 为什么要拆分数据库？"></a>1. 为什么要拆分数据库？</h2><p>单体项目在构建之初，数据库的负载和数据量都不大，所以不需要对数据库做拆分，小型财务系统、文书系统、ERP系统、OA系统，用一个MySQL数据库实例基本就够用了。</p>
-<p>就像《淘宝技术这十年》里面说到的，电商业务的数据量增长飞快，所以最开始的PHP+MySQL的架构已经不能满足实际要求了，于是淘宝想到的第一个办法就是把MySQL替换成Oracle。但是没过了多久，在08年前后，单节点的Oracle数据库也不好用了，于是淘宝终于告别了单节点数据库，开始拆分数据库。从一个节点，变成多个节点。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/08/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%8B%86%E5%88%86%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%8C%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B9%E6%B3%95/">展开全文 >></a>
         </p>
       
 
