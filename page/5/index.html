@@ -142,6 +142,73 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-这可能是最简单的一道面试题了" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/30/%E8%BF%99%E5%8F%AF%E8%83%BD%E6%98%AF%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E4%B8%80%E9%81%93%E9%9D%A2%E8%AF%95%E9%A2%98%E4%BA%86/">这可能是最简单的一道面试题了</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/30/%E8%BF%99%E5%8F%AF%E8%83%BD%E6%98%AF%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E4%B8%80%E9%81%93%E9%9D%A2%E8%AF%95%E9%A2%98%E4%BA%86/" class="archive-article-date">
+  	<time datetime="2020-03-30T15:02:32.015Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="偶然在论坛上看到一篇文章很有感觉，特此记录，这篇文章来自网络！！！"><a href="#偶然在论坛上看到一篇文章很有感觉，特此记录，这篇文章来自网络！！！" class="headerlink" title="偶然在论坛上看到一篇文章很有感觉，特此记录，这篇文章来自网络！！！"></a>偶然在论坛上看到一篇文章很有感觉，特此记录，这篇文章来自网络！！！</h3><p>这可能是历史上最简单的一道java面试题了。</p>
+<p>题目很简单，完成代码，判断一个整数是否是奇数：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isOdd</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br></pre></td></tr></table></figure>
+
+<p>相信相当数量的人都已经在准备吐槽了，只要看过《编程珠玑》的人都知道这道题的答案和其中极为简单的道理。不过别着急骂街，不管你信不信，这道笔试题我拿到的答案好多都长这样：</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/30/%E8%BF%99%E5%8F%AF%E8%83%BD%E6%98%AF%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E4%B8%80%E9%81%93%E9%9D%A2%E8%AF%95%E9%A2%98%E4%BA%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-单例模式的几种写法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -411,74 +478,9 @@
 
 
   
-    <article id="post-HashMap特性和源码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/30/HashMap%E7%89%B9%E6%80%A7%E5%92%8C%E6%BA%90%E7%A0%81/">HashMap特性和源码</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/30/HashMap%E7%89%B9%E6%80%A7%E5%92%8C%E6%BA%90%E7%A0%81/" class="archive-article-date">
-  	<time datetime="2020-03-30T15:02:31.945Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>HashMap在1.7和1.8做了一个比较大的改变。</p>
-<p>1.7使用的是==数组+链表==。他的数据节点是一个Entry节点，一个它的内部类，数据插入的过程使用一个==头插法==。头插法它在resize（扩容）的过程中在里面有一个resize的方法，它又调用了一个transfer方法，把里面的一些Entry进行了rehash。在这个过程中可能会造成一个链表的一个循环可能在下一次get的时候出现死循环的情况，因为他没有加锁，所以在多线程并发的情况下不能保证数据是安全的，就是我put进去的值，取出来还是我put进去的值。</p>
-<p>1.8使用的是 ==数组+链表+红黑树==，使用的是 ==尾插法==。没有改变他原来数据插入的数据，所以在这里不会出现链表</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/30/HashMap%E7%89%B9%E6%80%A7%E5%92%8C%E6%BA%90%E7%A0%81/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">« Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">Next »</a>
+      <a class="extend prev" rel="prev" href="/page/4/">« Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Next »</a>
     </nav>
   
 

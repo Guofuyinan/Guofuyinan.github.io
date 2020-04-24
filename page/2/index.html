@@ -142,6 +142,73 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-线程间的协作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/17/%E7%BA%BF%E7%A8%8B%E9%97%B4%E7%9A%84%E5%8D%8F%E4%BD%9C/">线程间的协作</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/17/%E7%BA%BF%E7%A8%8B%E9%97%B4%E7%9A%84%E5%8D%8F%E4%BD%9C/" class="archive-article-date">
+  	<time datetime="2020-04-17T13:53:07.675Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、线程的状态"><a href="#一、线程的状态" class="headerlink" title="一、线程的状态"></a>一、线程的状态</h2><p>Java中线程中状态可分为五种：New（新建状态），Runnable（就绪状态），Running（运行状态），Blocked（阻塞状态），Dead（死亡状态）。</p>
+<ul>
+<li><p><strong>New：</strong>新建状态，当线程创建完成时为新建状态，即new Thread(…)，还没有调用start方法时，线程处于新建状态。</p>
+</li>
+<li><p><strong>Runnable：</strong>就绪状态，当调用线程的的start方法后，线程进入就绪状态，等待CPU资源。处于就绪状态的线程由Java运行时系统的线程调度程序(thread scheduler)来调度。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/17/%E7%BA%BF%E7%A8%8B%E9%97%B4%E7%9A%84%E5%8D%8F%E4%BD%9C/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-MySQL 索引，B+树原理，以及建索引的几大原则" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -410,73 +477,9 @@
 
 
   
-    <article id="post-MySQL 服务占用cpu 100%，如何排查问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/10/MySQL%20%E6%9C%8D%E5%8A%A1%E5%8D%A0%E7%94%A8cpu%20100%25%EF%BC%8C%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5%E9%97%AE%E9%A2%98/">MySQL 服务占用cpu 100%，如何排查问题</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/10/MySQL%20%E6%9C%8D%E5%8A%A1%E5%8D%A0%E7%94%A8cpu%20100%25%EF%BC%8C%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-04-10T13:55:49.465Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一、引子"><a href="#一、引子" class="headerlink" title="一、引子"></a>一、引子</h2><p>对于互联网公司，线上CPU飙升的问题很常见（例如某个活动开始，流量突然飙升时），按照本文的步骤排查，基本1分钟即可搞定！特此整理排查方法一篇，供大家参考讨论提高。</p>
-<h2 id="二、问题复现"><a href="#二、问题复现" class="headerlink" title="二、问题复现"></a>二、问题复现</h2><p>线上系统突然运行缓慢，CPU飙升，甚至到100%，以及Full GC次数过多，接着就是各种报警：例如接口超时报警等。此时急需快速线上排查问题。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/10/MySQL%20%E6%9C%8D%E5%8A%A1%E5%8D%A0%E7%94%A8cpu%20100%25%EF%BC%8C%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5%E9%97%AE%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">« Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next »</a>
+      <a class="extend prev" rel="prev" href="/">« Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">Next »</a>
     </nav>
   
 
