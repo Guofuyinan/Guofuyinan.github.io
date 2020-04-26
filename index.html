@@ -142,6 +142,70 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ConcurrentHashMap源代码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/26/ConcurrentHashMap%E6%BA%90%E4%BB%A3%E7%A0%81/">ConcurrentHashMap源代码</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/26/ConcurrentHashMap%E6%BA%90%E4%BB%A3%E7%A0%81/" class="archive-article-date">
+  	<time datetime="2020-04-26T15:27:26.359Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="构造函数："><a href="#构造函数：" class="headerlink" title="构造函数："></a>构造函数：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ConcurrentHashMap</span><span class="params">(<span class="keyword">int</span> initialCapacity,</span></span></span><br><span class="line"><span class="function"><span class="params">                          <span class="keyword">float</span> loadFactor, <span class="keyword">int</span> concurrencyLevel)</span> </span>&#123;</span><br><span class="line">     <span class="comment">//参数不合法抛出异常</span></span><br><span class="line">     <span class="keyword">if</span> (!(loadFactor &gt; <span class="number">0</span>) || initialCapacity &lt; <span class="number">0</span> || concurrencyLevel &lt;= <span class="number">0</span>)</span><br><span class="line">         <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException();</span><br><span class="line">     <span class="comment">//最大只能有65535个槽位即最大的并发级别为65535</span></span><br><span class="line">     <span class="keyword">if</span> (concurrencyLevel &gt; MAX_SEGMENTS)</span><br><span class="line">         concurrencyLevel = MAX_SEGMENTS;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">int</span> sshift = <span class="number">0</span>;</span><br><span class="line">     <span class="keyword">int</span> ssize = <span class="number">1</span>;</span><br><span class="line">     <span class="comment">//ssize为Segment的大小为2的n次方，为什么是2的n次方，方便位运算，假设并发级别为16，则sshift=4，ssize=16</span></span><br><span class="line">     <span class="keyword">while</span> (ssize &lt; concurrencyLevel) &#123;</span><br><span class="line">         ++sshift;</span><br><span class="line">         ssize &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="comment">//segmentShift和segmentMask后续会用到用于参与定位hase运算的位数</span></span><br><span class="line">     <span class="keyword">this</span>.segmentShift = <span class="number">32</span> - sshift;</span><br><span class="line">     <span class="comment">//掩码</span></span><br><span class="line">     <span class="keyword">this</span>.segmentMask = ssize - <span class="number">1</span>;</span><br><span class="line">     <span class="comment">//最大容量为2的30次方</span></span><br><span class="line">     <span class="keyword">if</span> (initialCapacity &gt; MAXIMUM_CAPACITY)</span><br><span class="line">         initialCapacity = MAXIMUM_CAPACITY;</span><br><span class="line">     <span class="comment">//每个槽位可以分多少个容量</span></span><br><span class="line">     <span class="keyword">int</span> c = initialCapacity / ssize;</span><br><span class="line">     <span class="comment">//这里就很好理解了比如initialCapacity为65，ssize为16，则c为4，不够存65个的，则每个槽位多存一个就够了</span></span><br><span class="line">     <span class="keyword">if</span> (c * ssize &lt; initialCapacity)</span><br><span class="line">         ++c;</span><br><span class="line">     <span class="comment">//这里为2的原因是向HashEntry中插入第一个元素不会扩容，第二个才会扩容，在工作发现很多只插入一个元素的情形，不至于浪费</span></span><br><span class="line">     <span class="keyword">int</span> cap = MIN_SEGMENT_TABLE_CAPACITY;</span><br><span class="line">     <span class="comment">//这里为啥需要这个判断呢，原因是假设每个槽位的的容量为4，那么最小的容量不足以存放所以扩大</span></span><br><span class="line">     <span class="keyword">while</span> (cap &lt; c)</span><br><span class="line">         cap &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">     <span class="comment">// create segments and segments[0]，创建第一个segments[0]元素</span></span><br><span class="line">     Segment&lt;K,V&gt; s0 =</span><br><span class="line">         <span class="keyword">new</span> Segment&lt;K,V&gt;(loadFactor, (<span class="keyword">int</span>)(cap * loadFactor),</span><br><span class="line">                          (HashEntry&lt;K,V&gt;[])<span class="keyword">new</span> HashEntry[cap]);</span><br><span class="line">     <span class="comment">//创建大小为ssize的Segment数组</span></span><br><span class="line">     Segment&lt;K,V&gt;[] ss = (Segment&lt;K,V&gt;[])<span class="keyword">new</span> Segment[ssize];</span><br><span class="line">     <span class="comment">//这里的意思是将segments[0]写入到ss中</span></span><br><span class="line">     UNSAFE.putOrderedObject(ss, SBASE, s0); <span class="comment">// ordered write of segments[0]</span></span><br><span class="line">     <span class="comment">//将创建好的Segment数组赋值给全局变量segments</span></span><br><span class="line">     <span class="keyword">this</span>.segments = ss;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/26/ConcurrentHashMap%E6%BA%90%E4%BB%A3%E7%A0%81/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Redis过期删除策略" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -387,72 +451,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/04/19/volatile%E7%9A%84%E4%BD%BF%E7%94%A8%E5%8F%8A%E5%85%B6%E5%8E%9F%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java中的引用类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/18/Java%E4%B8%AD%E7%9A%84%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/">Java中的引用类型</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/18/Java%E4%B8%AD%E7%9A%84%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2020-04-18T06:08:42.141Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Java中一共有4种引用类型(其实还有一些其他的引用类型比如FinalReference)：强引用、软引用、弱引用、虚引用。</p>
-<p>其中强引用就是我们经常使用的Object a = new Object(); 这样的形式，在Java中并没有对应的Reference类。</p>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>在分析前，先抛几个问题？</p>
-<p>1.网上大多数文章对于软引用的介绍是：在内存不足的时候才会被回收，那内存不足是怎么定义的？什么才叫内存不足？</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/18/Java%E4%B8%AD%E7%9A%84%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/">展开全文 >></a>
         </p>
       
 

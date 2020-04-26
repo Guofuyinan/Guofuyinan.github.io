@@ -142,6 +142,70 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-MySQL建索引需要遵循哪些原则" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/06/MySQL%E5%BB%BA%E7%B4%A2%E5%BC%95%E9%9C%80%E8%A6%81%E9%81%B5%E5%BE%AA%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%88%99/">MySQL建索引需要遵循哪些原则</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/06/MySQL%E5%BB%BA%E7%B4%A2%E5%BC%95%E9%9C%80%E8%A6%81%E9%81%B5%E5%BE%AA%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%88%99/" class="archive-article-date">
+  	<time datetime="2020-04-06T05:42:05.696Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-选择唯一性索引"><a href="#1-选择唯一性索引" class="headerlink" title="1.选择唯一性索引"></a>1.选择唯一性索引</h2><p>唯一性索引的值是唯一的，可以更快速的通过该索引来确定某条记录。例如，学生表中学号是具有唯一性的字段。为该字段建立唯一性索引可以很快的确定某个学生的信息。如果使用姓名的话，可能存在同名现象，从而降低查询速度。</p>
+<h2 id="2-为经常需要排序、分组和联合操作的字段建立索引"><a href="#2-为经常需要排序、分组和联合操作的字段建立索引" class="headerlink" title="2.为经常需要排序、分组和联合操作的字段建立索引"></a>2.为经常需要排序、分组和联合操作的字段建立索引</h2><p>经常需要ORDER BY、GROUP BY、DISTINCT和UNION等操作的字段，排序操作会浪费很多时间。如果为其建立索引，可以有效地避免排序操作。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/06/MySQL%E5%BB%BA%E7%B4%A2%E5%BC%95%E9%9C%80%E8%A6%81%E9%81%B5%E5%BE%AA%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%88%99/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ArrayList or LinkedList的选择" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -393,72 +457,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/04/01/Java%E4%B8%AD%E7%9A%84%E9%94%81/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Hexo博客踩过的坑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/31/Hexo%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">Hexo博客踩过的坑</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/31/Hexo%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/" class="archive-article-date">
-  	<time datetime="2020-03-30T16:28:13.423Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="记录自己踩坑的日常，醉了…"><a href="#记录自己踩坑的日常，醉了…" class="headerlink" title="记录自己踩坑的日常，醉了…"></a>记录自己踩坑的日常，醉了…</h3><p>搞了三天三夜，回过头发现好像个傻子…..</p>
-<p>好像个傻子…</p>
-<p>像个傻子.</p>
-<p>且听傻子记录一下过程，先看图：</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/31/Hexo%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">展开全文 >></a>
         </p>
       
 
