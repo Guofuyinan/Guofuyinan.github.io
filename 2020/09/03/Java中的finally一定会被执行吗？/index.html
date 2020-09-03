@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>郭付一男的Hexo博客</title>
+  <title>Java中的finally一定会被执行吗？ | 郭付一男的Hexo博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Keep Working">
-<meta property="og:type" content="website">
-<meta property="og:title" content="郭付一男的Hexo博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="一、finally一定会执行吗？不是！我们可以看两种情况： 1.在执行try块之前直接return，我们发现finally块是不会执行的 12345678910111213141516171819public class TryCatchTest &amp;#123;  private static int total() &amp;#123;    int i &#x3D; 11;    if (i &#x3D;&#x3D; 11) &amp;#1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java中的finally一定会被执行吗？">
+<meta property="og:url" content="http://yoursite.com/2020/09/03/Java%E4%B8%AD%E7%9A%84finally%E4%B8%80%E5%AE%9A%E4%BC%9A%E8%A2%AB%E6%89%A7%E8%A1%8C%E5%90%97%EF%BC%9F/index.html">
 <meta property="og:site_name" content="郭付一男的Hexo博客">
-<meta property="og:description" content="Keep Working">
+<meta property="og:description" content="一、finally一定会执行吗？不是！我们可以看两种情况： 1.在执行try块之前直接return，我们发现finally块是不会执行的 12345678910111213141516171819public class TryCatchTest &amp;#123;  private static int total() &amp;#123;    int i &#x3D; 11;    if (i &#x3D;&#x3D; 11) &amp;#1">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-09-03T14:36:13.599Z">
+<meta property="article:modified_time" content="2020-09-03T15:40:58.199Z">
 <meta property="article:author" content="郭付一男">
 <meta name="twitter:card" content="summary">
   
@@ -140,16 +142,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-Java中的finally一定会被执行吗？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Java中的finally一定会被执行吗？" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/03/Java%E4%B8%AD%E7%9A%84finally%E4%B8%80%E5%AE%9A%E4%BC%9A%E8%A2%AB%E6%89%A7%E8%A1%8C%E5%90%97%EF%BC%9F/">Java中的finally一定会被执行吗？</a>
+    <h1 class="article-title" itemprop="name">
+      Java中的finally一定会被执行吗？
     </h1>
   
 
@@ -200,6 +200,27 @@
       
 
       
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
     <div class="article-info article-info-index">
       
@@ -207,16 +228,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/03/Java%E4%B8%AD%E7%9A%84finally%E4%B8%80%E5%AE%9A%E4%BC%9A%E8%A2%AB%E6%89%A7%E8%A1%8C%E5%90%97%EF%BC%9F/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/09/03/Java%E4%B8%AD%E7%9A%84finally%E4%B8%80%E5%AE%9A%E4%BC%9A%E8%A2%AB%E6%89%A7%E8%A1%8C%E5%90%97%EF%BC%9F/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/16/1.8ConcurrentHashMap/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">1.8ConcurrentHashMap</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -236,286 +316,14 @@
 
 
 
-
-  
-    <article id="post-1.8ConcurrentHashMap" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/16/1.8ConcurrentHashMap/">1.8ConcurrentHashMap</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/16/1.8ConcurrentHashMap/" class="archive-article-date">
-  	<time datetime="2020-05-16T15:25:48.322Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="initTable-方法："><a href="#initTable-方法：" class="headerlink" title="initTable()方法："></a>initTable()方法：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Node&lt;K,V&gt;[] initTable() &#123;</span><br><span class="line">        Node&lt;K,V&gt;[] tab; <span class="keyword">int</span> sc;</span><br><span class="line">   	    <span class="comment">//循环判断表是否为空，直到初始化成功为止</span></span><br><span class="line">        <span class="keyword">while</span> ((tab = table) == <span class="keyword">null</span> || tab.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">//sizeCtl 这个值有很多情况，默认值为0，</span></span><br><span class="line">  			<span class="comment">//当为 -1 时，说明有其它线程正在对表进行初始化操作</span></span><br><span class="line"> 			<span class="comment">//当表初始化成功后，又会把它设置为扩容阈值</span></span><br><span class="line">  			<span class="comment">//当为一个小于 -1 的负数，用来表示当前有几个线程正在帮助扩容</span></span><br><span class="line">            <span class="keyword">if</span> ((sc = sizeCtl) &lt; <span class="number">0</span>)</span><br><span class="line">                Thread.yield(); </span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (U.compareAndSwapInt(<span class="keyword">this</span>, SIZECTL, sc, -<span class="number">1</span>)) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="keyword">if</span> ((tab = table) == <span class="keyword">null</span> || tab.length == <span class="number">0</span>) &#123;</span><br><span class="line">                        <span class="keyword">int</span> n = (sc &gt; <span class="number">0</span>) ? sc : DEFAULT_CAPACITY;</span><br><span class="line">                        <span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line">                        Node&lt;K,V&gt;[] nt = (Node&lt;K,V&gt;[])<span class="keyword">new</span> Node&lt;?,?&gt;[n];</span><br><span class="line">                        table = tab = nt;</span><br><span class="line">                        sc = n - (n &gt;&gt;&gt; <span class="number">2</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                    sizeCtl = sc;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> tab;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/16/1.8ConcurrentHashMap/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-1.7的ConcurrentHashMap" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/12/1.7%E7%9A%84ConcurrentHashMap/">1.7的ConcurrentHashMap</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/12/1.7%E7%9A%84ConcurrentHashMap/" class="archive-article-date">
-  	<time datetime="2020-05-12T11:55:19.689Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="源码解析："><a href="#源码解析：" class="headerlink" title="源码解析："></a>源码解析：</h2><p>  ConcurrentHashMap离不开Segment，Segment是ConcurrentHashMap的一个静态内部类，可以看到Segment继承了重入锁ReentrantLock，要想访问Segment片段，线程必须获得同步锁，结构如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Segment</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">extends</span> <span class="title">ReentrantLock</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//尝试获取锁的最多尝试次数，即自旋次数</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_SCAN_RETRIES =</span><br><span class="line">            Runtime.getRuntime().availableProcessors() &gt; <span class="number">1</span> ? <span class="number">64</span> : <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//HashEntry数组，也就是键值对数组</span></span><br><span class="line">    <span class="keyword">transient</span> <span class="keyword">volatile</span> HashEntry&lt;K, V&gt;[] table;</span><br><span class="line">    </span><br><span class="line">	<span class="comment">//元素的个数</span></span><br><span class="line">    <span class="keyword">transient</span> <span class="keyword">int</span> count;</span><br><span class="line">    </span><br><span class="line">	<span class="comment">//segment中发生改变元素的操作的次数，如put/remove</span></span><br><span class="line">    <span class="keyword">transient</span> <span class="keyword">int</span> modCount;</span><br><span class="line">    </span><br><span class="line">	<span class="comment">//当table大小超过阈值时,对table进行扩容,值为capacity * loadFactor</span></span><br><span class="line">    <span class="comment">//需要知道的是，每个Segment都是单独处理扩容的，互相之间不会产生影响</span></span><br><span class="line">    <span class="keyword">transient</span> <span class="keyword">int</span> threshold;</span><br><span class="line">    </span><br><span class="line">	<span class="comment">//加载因子</span></span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">float</span> loadFactor;</span><br><span class="line"></span><br><span class="line">    Segment(<span class="keyword">float</span> lf, <span class="keyword">int</span> threshold, HashEntry&lt;K, V&gt;[] tab) &#123;</span><br><span class="line">        <span class="keyword">this</span>.loadFactor = lf;</span><br><span class="line">        <span class="keyword">this</span>.threshold = threshold;</span><br><span class="line">        <span class="keyword">this</span>.table = tab;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/12/1.7%E7%9A%84ConcurrentHashMap/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Redis过期删除策略" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/24/Redis%E8%BF%87%E6%9C%9F%E5%88%A0%E9%99%A4%E7%AD%96%E7%95%A5/">Redis过期删除策略</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/24/Redis%E8%BF%87%E6%9C%9F%E5%88%A0%E9%99%A4%E7%AD%96%E7%95%A5/" class="archive-article-date">
-  	<time datetime="2020-04-24T13:22:01.873Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>对于Redis服务器来说，内存资源非常宝贵，如果一些过期键一直不被删除，就会造成资源浪费，因此我们需要考虑一个问题：如果一个键过期了，它什么时候会被删除呢？</p>
-<h2 id="1-常见的删除策略"><a href="#1-常见的删除策略" class="headerlink" title="1. 常见的删除策略"></a>1. 常见的删除策略</h2><p>常见的删除策略有以下3种：</p>
-<ul>
-<li><strong>定时删除</strong></li>
-</ul>
-<p>在设置键的过期时间的同时，创建一个定时器，让定时器在键的过期时间来临时，立即执行对键的删除操作。</p>
-<ul>
-<li><strong>惰性删除</strong></li>
-</ul>
-<p>放任过期键不管，每次从键空间中获取键时，检查该键是否过期，如果过期，就删除该键，如果没有过期，就返回该键。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/24/Redis%E8%BF%87%E6%9C%9F%E5%88%A0%E9%99%A4%E7%AD%96%E7%95%A5/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-序列化和反序列化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/23/%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">序列化和反序列化</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/23/%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2020-04-23T14:41:11.715Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>遇到这个 Java Serializable 序列化这个接口，我们可能会有如下的问题</p>
-<ul>
-<li>什么叫序列化和反序列化</li>
-<li>作用，为啥要实现这个 Serializable 接口，也就是为啥要序列化</li>
-<li>serialVersionUID 这个的值到底是在怎么设置的，有什么用。有的是1L，有的是一长串数字，迷惑ing。</li>
-</ul>
-<p>我刚刚见到这个关键字 Serializable 的时候，就有如上的这么些问题。</p>
-<p>在处理这个问题之前，你要先知道一个问题，这个比较重要。</p>
-<blockquote>
-<p>这个Serializable接口，以及相关的东西，全部都在 Java io 里面的。</p>
-</blockquote>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/23/%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next »</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -538,8 +346,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
