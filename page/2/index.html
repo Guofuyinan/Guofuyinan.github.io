@@ -142,6 +142,79 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-序列化和反序列化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/23/%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">序列化和反序列化</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/23/%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="archive-article-date">
+  	<time datetime="2020-04-23T14:41:11.715Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>遇到这个 Java Serializable 序列化这个接口，我们可能会有如下的问题</p>
+<ul>
+<li>什么叫序列化和反序列化</li>
+<li>作用，为啥要实现这个 Serializable 接口，也就是为啥要序列化</li>
+<li>serialVersionUID 这个的值到底是在怎么设置的，有什么用。有的是1L，有的是一长串数字，迷惑ing。</li>
+</ul>
+<p>我刚刚见到这个关键字 Serializable 的时候，就有如上的这么些问题。</p>
+<p>在处理这个问题之前，你要先知道一个问题，这个比较重要。</p>
+<blockquote>
+<p>这个Serializable接口，以及相关的东西，全部都在 Java io 里面的。</p>
+</blockquote>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/23/%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-关于IO同步、异步、阻塞、非阻塞的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -375,71 +448,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/04/17/%E7%BA%BF%E7%A8%8B%E9%97%B4%E7%9A%84%E5%8D%8F%E4%BD%9C/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MySQL 索引，B+树原理，以及建索引的几大原则" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/16/MySQL%20%E7%B4%A2%E5%BC%95%EF%BC%8CB+%E6%A0%91%E5%8E%9F%E7%90%86%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%BB%BA%E7%B4%A2%E5%BC%95%E7%9A%84%E5%87%A0%E5%A4%A7%E5%8E%9F%E5%88%99/">MySQL 索引，B+树原理，以及建索引的几大原则</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/16/MySQL%20%E7%B4%A2%E5%BC%95%EF%BC%8CB+%E6%A0%91%E5%8E%9F%E7%90%86%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%BB%BA%E7%B4%A2%E5%BC%95%E7%9A%84%E5%87%A0%E5%A4%A7%E5%8E%9F%E5%88%99/" class="archive-article-date">
-  	<time datetime="2020-04-16T12:08:51.668Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>MYSQL一直了解得都不多，之前写sql准备提交生产环境之前的时候，老员工帮我检查了下sql，让修改了一下存储引擎，当时我使用的是Myisam，后面改成InnoDB了。为什么要改成这样，之前都没有听过存储引擎，于是网上查了一下。</p>
-<p>事实上使用不同的存储引擎也是有很大区别的，下面猿友们可以了解一下。</p>
-<h2 id="一、存储引擎的比较"><a href="#一、存储引擎的比较" class="headerlink" title="一、存储引擎的比较"></a>一、存储引擎的比较</h2>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/16/MySQL%20%E7%B4%A2%E5%BC%95%EF%BC%8CB+%E6%A0%91%E5%8E%9F%E7%90%86%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%BB%BA%E7%B4%A2%E5%BC%95%E7%9A%84%E5%87%A0%E5%A4%A7%E5%8E%9F%E5%88%99/">展开全文 >></a>
         </p>
       
 
