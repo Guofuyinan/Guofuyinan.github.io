@@ -15,13 +15,13 @@
 <meta property="og:site_name" content="郭付一男的Hexo博客">
 <meta property="og:description" content="背景首先，来谈谈B树。为什么要使用B树？我们需要明白以下两个事实： 【事实1】不同容量的存储器，访问速度差异悬殊。以磁盘和内存为例，访问磁盘的时间大概是ms级的，访问内存的时间大概是ns级的。有个形象的比喻，若一次内存访问需要1秒，则一次外存访问需要1天。所以，现在的存储系统，都是分级组织的。 最常用的数据尽可能放在更高层、更小的存储器中，只有在当前层找不到，才向更低层、更大的存储器中寻找。这也就">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/8KKrHK5ic6XChQG96tAicY3WyEJtHVYibIY19P6veqfbJgcCGMUlR7mJvhWxEWn4UcicwCTLoOtzvu5PfiaMJ642fhw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="http://yoursite.com/2020/09/07/images/50.png">
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/8KKrHK5ic6XChQG96tAicY3WyEJtHVYibIYAKJia9GhJqhXeq9CI1CObI7hxn30VFfURGa1oIwdS2mnCk2qg6mDtpQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
 <meta property="article:published_time" content="2020-09-07T14:32:02.909Z">
-<meta property="article:modified_time" content="2020-09-07T14:35:22.657Z">
+<meta property="article:modified_time" content="2020-09-07T14:37:31.381Z">
 <meta property="article:author" content="郭付一男">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_png/8KKrHK5ic6XChQG96tAicY3WyEJtHVYibIY19P6veqfbJgcCGMUlR7mJvhWxEWn4UcicwCTLoOtzvu5PfiaMJ642fhw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta name="twitter:image" content="http://yoursite.com/2020/09/07/images/50.png">
   
     <link rel="alternative" href="/atom.xml" title="郭付一男的Hexo博客" type="application/atom+xml">
   
@@ -186,7 +186,7 @@
 <p>根据节点的分支的上下限，也可以称其为(┌m/2┐, m)树。比如，阶数m=4时，这样的B树也可以称为(2,4)树。（事实上，(2,4)树是一棵比较特殊的B树，它和红黑树有着特别的渊源！后面谈及红黑树时会谈到。）</p>
 <p>并且，每个内部结点的关键字都作为其子树的分隔值。比如，某结点含有2个关键字（假设为a1和a2），也就是说该结点含有3个子树。那么，最左子树的关键字均小于a1；中间子树的关键字介于a1~a2；最右子树的关键字均大于a2。</p>
 <p>示例，一棵3阶的B树是这个样子：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/8KKrHK5ic6XChQG96tAicY3WyEJtHVYibIY19P6veqfbJgcCGMUlR7mJvhWxEWn4UcicwCTLoOtzvu5PfiaMJ642fhw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<p><img src="../images/50.png" alt=""></p>
 <h3 id="B树的高度（了解）"><a href="#B树的高度（了解）" class="headerlink" title="B树的高度（了解）"></a>B树的高度（了解）</h3><p>假定一棵B树非空，具有n个关键字、高度为h（令根结点为第1层）、阶数为m，那么该B树的最大高度和最小高度分别是多少？</p>
 <h3 id="最大高度"><a href="#最大高度" class="headerlink" title="最大高度"></a>最大高度</h3><p>当树的高度最大时，则每个结点含有的关键字数应该尽量少。根据定义，根结点至少有2个孩子（即1个关键字），除根结点之外的非叶结点至少有┌m/2┐个孩子（即┌m/2┐-1个关键字），为了描述方便，这里令p = ┌m/2┐。</p>
 <ul>
