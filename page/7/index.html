@@ -142,6 +142,71 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-HashMap特性和源码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/30/HashMap%E7%89%B9%E6%80%A7%E5%92%8C%E6%BA%90%E7%A0%81/">HashMap特性和源码</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/30/HashMap%E7%89%B9%E6%80%A7%E5%92%8C%E6%BA%90%E7%A0%81/" class="archive-article-date">
+  	<time datetime="2020-03-30T15:02:31.945Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>HashMap在1.7和1.8做了一个比较大的改变。</p>
+<p>1.7使用的是==数组+链表==。他的数据节点是一个Entry节点，一个它的内部类，数据插入的过程使用一个==头插法==。头插法它在resize（扩容）的过程中在里面有一个resize的方法，它又调用了一个transfer方法，把里面的一些Entry进行了rehash。在这个过程中可能会造成一个链表的一个循环可能在下一次get的时候出现死循环的情况，因为他没有加锁，所以在多线程并发的情况下不能保证数据是安全的，就是我put进去的值，取出来还是我put进去的值。</p>
+<p>1.8使用的是 ==数组+链表+红黑树==，使用的是 ==尾插法==。没有改变他原来数据插入的数据，所以在这里不会出现链表</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/30/HashMap%E7%89%B9%E6%80%A7%E5%92%8C%E6%BA%90%E7%A0%81/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-HashMap和TreeMap之间的选择" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -403,74 +468,9 @@
 
 
   
-    <article id="post-hashCode();和equals();之间的关系" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/27/hashCode();%E5%92%8Cequals();%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/">hashCode();和equals();之间的关系</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/27/hashCode();%E5%92%8Cequals();%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/" class="archive-article-date">
-  	<time datetime="2020-03-27T08:46:24.100Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a><strong>介绍</strong></h2><p><code>equals()</code> 的作用是用来判断两个对象是否相等。</p>
-<p><code>hashCode()</code> 的作用是获取哈希码，也称为散列码；它实际上是返回一个int整数。这个哈希码的作用是确定该对象在哈希表中的索引位置。</p>
-<h2 id="关系"><a href="#关系" class="headerlink" title="关系"></a><strong>关系</strong></h2><p>我们以“类的用途”来将“hashCode() 和 equals()的关系”分2种情况来说明：</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/27/hashCode();%E5%92%8Cequals();%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/6/">« Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span>
+      <a class="extend prev" rel="prev" href="/page/6/">« Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/8/">Next »</a>
     </nav>
   
 
