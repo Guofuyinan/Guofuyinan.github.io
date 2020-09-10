@@ -224,6 +224,27 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureExplicitCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    modCount++;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// overflow-conscious code</span></span><br><span class="line">    <span class="keyword">if</span> (minCapacity - elementData.length &gt; <span class="number">0</span>)</span><br><span class="line">        grow(minCapacity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>增加容量：默认1.5倍扩容。</p>
+<ol>
+<li>获取当前数组长度=&gt;oldCapacity</li>
+<li>oldCapacity&gt;&gt;1 表示将oldCapacity右移一位(位运算)，相当于除2。再加上1，相当于新容量扩容1.5倍。</li>
+<li>如果<code>newCapacity&gt;1=1</code>,<code>1&lt;2</code>所以如果不处理该情况，扩容将不能正确完成。</li>
+<li>如果新容量比最大值还要大，则将新容量赋值为VM要求最大值。</li>
+<li>将elementData拷贝到一个新的容量中。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">grow</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// overflow-conscious code</span></span><br><span class="line">    <span class="keyword">int</span> oldCapacity = elementData.length;</span><br><span class="line">    <span class="keyword">int</span> newCapacity = oldCapacity + (oldCapacity &gt;&gt; <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>)</span><br><span class="line">        newCapacity = minCapacity;</span><br><span class="line">    <span class="keyword">if</span> (newCapacity - MAX_ARRAY_SIZE &gt; <span class="number">0</span>)</span><br><span class="line">        newCapacity = hugeCapacity(minCapacity);</span><br><span class="line">    <span class="comment">// minCapacity is usually close to size, so this is a win:</span></span><br><span class="line">    elementData = Arrays.copyOf(elementData, newCapacity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="size-1的问题"><a href="#size-1的问题" class="headerlink" title="size+1的问题"></a>size+1的问题</h5><blockquote>
+<p>好了，那到这里可以说一下为什么要size+1。</p>
+</blockquote>
+<p>size+1代表的含义是：</p>
+<ol>
+<li>如果集合添加元素成功后，集合中的实际元素个数。</li>
+<li>为了确保扩容不会出现错误。</li>
+</ol>
+<p>假如不加一处理，如果默认size是0，则0+0&gt;&gt;1还是0。<br>如果size是1，则1+1&gt;&gt;1还是1。有人问:不是默认容量大小是10吗?事实上，jdk1.8版本以后，ArrayList的扩容放在add()方法中。之前放在构造方法中。我用的是1.8版本，所以默认<code>ArrayList arrayList = new ArrayList();</code>后，size应该是0.所以,size+1对扩容来讲很必要.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    ArrayList arrayList = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    System.out.println(arrayList.size());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出:<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>事实上上面的代码是证明不了容量大小的，因为size只会在调用<code>add()</code>方法时才会自增。有办法的小伙伴可以在评论区大显神通。</p>
 
       
 
