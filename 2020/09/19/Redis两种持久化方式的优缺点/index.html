@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Redis两种持久化方式的优缺点 | 郭付一男的Hexo博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Keep Working">
+  <meta name="description" content="redis两种持久化的方式 RDB持久化可以在指定的时间间隔内生成数据集的时间点快照 AOF持久化记录服务器执行的所有写操作命令,并在服务器启动时,通过重新执行这些命令来还原数据集,AOF文件中全部以redis协议的格式来保存,新命令会被追加到文件的末尾,redis还可以在后台对AOF文件进行重写,文件的体积不会超出保存数据集状态所需要的实际大小, redis还可以同时使用AOF持久化和RDB持久">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis两种持久化方式的优缺点">
 <meta property="og:url" content="http://yoursite.com/2020/09/19/Redis%E4%B8%A4%E7%A7%8D%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9/index.html">
 <meta property="og:site_name" content="郭付一男的Hexo博客">
-<meta property="og:description" content="Keep Working">
+<meta property="og:description" content="redis两种持久化的方式 RDB持久化可以在指定的时间间隔内生成数据集的时间点快照 AOF持久化记录服务器执行的所有写操作命令,并在服务器启动时,通过重新执行这些命令来还原数据集,AOF文件中全部以redis协议的格式来保存,新命令会被追加到文件的末尾,redis还可以在后台对AOF文件进行重写,文件的体积不会超出保存数据集状态所需要的实际大小, redis还可以同时使用AOF持久化和RDB持久">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-09-19T14:39:18.592Z">
-<meta property="article:modified_time" content="2020-09-19T14:39:18.592Z">
+<meta property="article:modified_time" content="2020-09-19T14:45:09.880Z">
 <meta property="article:author" content="郭付一男">
 <meta name="twitter:card" content="summary">
   
@@ -162,7 +162,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="redis两种持久化的方式"><a href="#redis两种持久化的方式" class="headerlink" title="redis两种持久化的方式"></a>redis两种持久化的方式</h3><ol>
+<li>RDB持久化可以在指定的时间间隔内生成数据集的时间点快照</li>
+<li>AOF持久化记录服务器执行的所有写操作命令,并在服务器启动时,通过重新执行这些命令来还原数据集,AOF文件中全部以redis协议的格式来保存,新命令会被追加到文件的末尾,redis还可以在后台对AOF文件进行重写,文件的体积不会超出保存数据集状态所需要的实际大小,</li>
+<li>redis还可以同时使用AOF持久化和RDB持久化,在这种情况下,当redis重启时,它会有限使用AOF文件来还原数据集,因为AOF文件保存的数据集通常比RDB文件所保存的数据集更加完</li>
+</ol>
+
       
 
       

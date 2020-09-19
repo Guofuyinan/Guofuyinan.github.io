@@ -162,7 +162,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="redis两种持久化的方式"><a href="#redis两种持久化的方式" class="headerlink" title="redis两种持久化的方式"></a>redis两种持久化的方式</h3><ol>
+<li>RDB持久化可以在指定的时间间隔内生成数据集的时间点快照</li>
+<li>AOF持久化记录服务器执行的所有写操作命令,并在服务器启动时,通过重新执行这些命令来还原数据集,AOF文件中全部以redis协议的格式来保存,新命令会被追加到文件的末尾,redis还可以在后台对AOF文件进行重写,文件的体积不会超出保存数据集状态所需要的实际大小,</li>
+<li>redis还可以同时使用AOF持久化和RDB持久化,在这种情况下,当redis重启时,它会有限使用AOF文件来还原数据集,因为AOF文件保存的数据集通常比RDB文件所保存的数据集更加完</li>
+</ol>
+
       
 
       
