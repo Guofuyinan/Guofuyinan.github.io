@@ -142,6 +142,71 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-MySQL 索引，B+树原理，以及建索引的几大原则" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/16/MySQL%20%E7%B4%A2%E5%BC%95%EF%BC%8CB+%E6%A0%91%E5%8E%9F%E7%90%86%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%BB%BA%E7%B4%A2%E5%BC%95%E7%9A%84%E5%87%A0%E5%A4%A7%E5%8E%9F%E5%88%99/">MySQL 索引，B+树原理，以及建索引的几大原则</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/16/MySQL%20%E7%B4%A2%E5%BC%95%EF%BC%8CB+%E6%A0%91%E5%8E%9F%E7%90%86%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%BB%BA%E7%B4%A2%E5%BC%95%E7%9A%84%E5%87%A0%E5%A4%A7%E5%8E%9F%E5%88%99/" class="archive-article-date">
+  	<time datetime="2020-04-16T12:08:51.668Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>MYSQL一直了解得都不多，之前写sql准备提交生产环境之前的时候，老员工帮我检查了下sql，让修改了一下存储引擎，当时我使用的是Myisam，后面改成InnoDB了。为什么要改成这样，之前都没有听过存储引擎，于是网上查了一下。</p>
+<p>事实上使用不同的存储引擎也是有很大区别的，下面猿友们可以了解一下。</p>
+<h2 id="一、存储引擎的比较"><a href="#一、存储引擎的比较" class="headerlink" title="一、存储引擎的比较"></a>一、存储引擎的比较</h2>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/16/MySQL%20%E7%B4%A2%E5%BC%95%EF%BC%8CB+%E6%A0%91%E5%8E%9F%E7%90%86%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%BB%BA%E7%B4%A2%E5%BC%95%E7%9A%84%E5%87%A0%E5%A4%A7%E5%8E%9F%E5%88%99/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ConcurrentHashMap是如何保证线程安全的" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -380,72 +445,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/04/10/MySQL%20%E6%9C%8D%E5%8A%A1%E5%8D%A0%E7%94%A8cpu%20100%25%EF%BC%8C%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5%E9%97%AE%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MySQL行锁和表锁的含义及区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/09/MySQL%E8%A1%8C%E9%94%81%E5%92%8C%E8%A1%A8%E9%94%81%E7%9A%84%E5%90%AB%E4%B9%89%E5%8F%8A%E5%8C%BA%E5%88%AB/">MySQL行锁和表锁的含义及区别</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/09/MySQL%E8%A1%8C%E9%94%81%E5%92%8C%E8%A1%A8%E9%94%81%E7%9A%84%E5%90%AB%E4%B9%89%E5%8F%8A%E5%8C%BA%E5%88%AB/" class="archive-article-date">
-  	<time datetime="2020-04-09T06:42:09.172Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p><em>对于行锁和表锁的含义区别，在面试中应该是高频出现的，我们应该对MySQL中的锁有一个系统的认识，更详细的需要自行查阅资料，本篇为概括性的总结回答。</em></p>
-<p>MySQL常用引擎有MyISAM和InnoDB，而InnoDB是mysql默认的引擎。MyISAM不支持行锁，而InnoDB支持行锁和表锁。</p>
-<p><strong>如何加锁？</strong></p>
-<p>MyISAM在执行查询语句（SELECT）前，会自动给涉及的所有表加读锁，在执行更新操作（UPDATE、DELETE、INSERT等）前，会自动给涉及的表加写锁，这个过程并不需要用户干预，因此用户一般不需要直接用LOCK TABLE命令给MyISAM表显式加锁。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/09/MySQL%E8%A1%8C%E9%94%81%E5%92%8C%E8%A1%A8%E9%94%81%E7%9A%84%E5%90%AB%E4%B9%89%E5%8F%8A%E5%8C%BA%E5%88%AB/">展开全文 >></a>
         </p>
       
 
