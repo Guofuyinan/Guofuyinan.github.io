@@ -15,12 +15,12 @@
 <meta property="og:site_name" content="郭付一男的Hexo博客">
 <meta property="og:description" content="一、Iterator的API关于Iterator主要有三个方法：hasNext()、next()、remove()  hasNext:没有指针下移操作，只是判断是否存在下一个元素 next：指针下移，返回该指针所指向的元素 remove：删除当前指针所指向的元素，一般和next方法一起用，这时候的作用就是删除next方法返回的元素  二、迭代器原理 1、当创建完成指向某个集合或者容器的Iterat">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/8KKrHK5ic6XCSvBptYZIrH543hhTerKvD94MecTeoic7Lo9QibKyk2ic5icddV8SXpOJrGPJAOq9GINRLueq5LVTiayA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="http://yoursite.com/2020/09/22/images/53.png">
 <meta property="article:published_time" content="2020-09-22T14:33:27.471Z">
-<meta property="article:modified_time" content="2020-09-22T14:44:27.159Z">
+<meta property="article:modified_time" content="2020-09-22T14:51:40.083Z">
 <meta property="article:author" content="郭付一男">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/8KKrHK5ic6XCSvBptYZIrH543hhTerKvD94MecTeoic7Lo9QibKyk2ic5icddV8SXpOJrGPJAOq9GINRLueq5LVTiayA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta name="twitter:image" content="http://yoursite.com/2020/09/22/images/53.png">
   
     <link rel="alternative" href="/atom.xml" title="郭付一男的Hexo博客" type="application/atom+xml">
   
@@ -170,7 +170,7 @@
 <li>next：指针下移，返回该指针所指向的元素</li>
 <li>remove：删除当前指针所指向的元素，一般和next方法一起用，这时候的作用就是删除next方法返回的元素</li>
 </ul>
-<h2 id="二、迭代器原理"><a href="#二、迭代器原理" class="headerlink" title="二、迭代器原理"></a>二、迭代器原理</h2><p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/8KKrHK5ic6XCSvBptYZIrH543hhTerKvD94MecTeoic7Lo9QibKyk2ic5icddV8SXpOJrGPJAOq9GINRLueq5LVTiayA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<h2 id="二、迭代器原理"><a href="#二、迭代器原理" class="headerlink" title="二、迭代器原理"></a>二、迭代器原理</h2><p><img src="../images/53.png" alt="img"></p>
 <p>1、当创建完成指向某个集合或者容器的Iterator对象时，这时的指针其实指向的是第一个元素的上方，即指向一个空。(int cursor = 0;)</p>
 <p>2、当调用hasNext方法的时候，只是判断下一个元素的有无，并不移动指针</p>
 <p>3、当调用next方法的时候，向下移动指针，并且返回指针指向的元素，如果指针指向的内存中没有元素，会报异 常。</p>
