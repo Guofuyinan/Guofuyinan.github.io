@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>常用的Iterator中hasNext()、next()、remove() | 郭付一男的Hexo博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、Iterator的API关于Iterator主要有三个方法：hasNext()、next()、remove()  hasNext:没有指针下移操作，只是判断是否存在下一个元素 next：指针下移，返回该指针所指向的元素 remove：删除当前指针所指向的元素，一般和next方法一起用，这时候的作用就是删除next方法返回的元素  二、迭代器原理 1、当创建完成指向某个集合或者容器的Iterat">
+  <meta name="description" content="一、Iterator的API关于Iterator主要有三个方法：hasNext()、next()、remove()  hasNext:没有指针下移操作，只是判断是否存在下一个元素  next：指针下移，返回该指针所指向的元素  remove：删除当前指针所指向的元素，一般和next方法一起用，这时候的作用就是删除next方法返回的元素">
 <meta property="og:type" content="article">
 <meta property="og:title" content="常用的Iterator中hasNext()、next()、remove()">
 <meta property="og:url" content="http://yoursite.com/2020/09/22/%E5%B8%B8%E7%94%A8%E7%9A%84Iterator%E4%B8%ADhasNext()%E3%80%81next()%E3%80%81remove()/index.html">
 <meta property="og:site_name" content="郭付一男的Hexo博客">
-<meta property="og:description" content="一、Iterator的API关于Iterator主要有三个方法：hasNext()、next()、remove()  hasNext:没有指针下移操作，只是判断是否存在下一个元素 next：指针下移，返回该指针所指向的元素 remove：删除当前指针所指向的元素，一般和next方法一起用，这时候的作用就是删除next方法返回的元素  二、迭代器原理 1、当创建完成指向某个集合或者容器的Iterat">
+<meta property="og:description" content="一、Iterator的API关于Iterator主要有三个方法：hasNext()、next()、remove()  hasNext:没有指针下移操作，只是判断是否存在下一个元素  next：指针下移，返回该指针所指向的元素  remove：删除当前指针所指向的元素，一般和next方法一起用，这时候的作用就是删除next方法返回的元素">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/2020/09/22/images/53.png">
 <meta property="article:published_time" content="2020-09-22T14:33:27.471Z">
-<meta property="article:modified_time" content="2020-09-22T14:51:40.083Z">
+<meta property="article:modified_time" content="2020-09-22T15:02:03.861Z">
 <meta property="article:author" content="郭付一男">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/2020/09/22/images/53.png">
@@ -166,9 +166,14 @@
       
         <h2 id="一、Iterator的API"><a href="#一、Iterator的API" class="headerlink" title="一、Iterator的API"></a>一、Iterator的API</h2><p>关于Iterator主要有三个方法：hasNext()、next()、remove()</p>
 <ul>
-<li>hasNext:没有指针下移操作，只是判断是否存在下一个元素</li>
-<li>next：指针下移，返回该指针所指向的元素</li>
-<li>remove：删除当前指针所指向的元素，一般和next方法一起用，这时候的作用就是删除next方法返回的元素</li>
+<li><p>hasNext:没有指针下移操作，只是判断是否存在下一个元素</p>
+</li>
+<li><p>next：指针下移，返回该指针所指向的元素</p>
+</li>
+<li><p>remove：删除当前指针所指向的元素，一般和next方法一起用，这时候的作用就是删除next方法返回的元素</p>
+<a id="more"></a>
+
+</li>
 </ul>
 <h2 id="二、迭代器原理"><a href="#二、迭代器原理" class="headerlink" title="二、迭代器原理"></a>二、迭代器原理</h2><p><img src="../images/53.png" alt="img"></p>
 <p>1、当创建完成指向某个集合或者容器的Iterator对象时，这时的指针其实指向的是第一个元素的上方，即指向一个空。(int cursor = 0;)</p>
