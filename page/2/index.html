@@ -142,6 +142,71 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-为什么选择B+树作为数据库索引结构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/07/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9B+%E6%A0%91%E4%BD%9C%E4%B8%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95%E7%BB%93%E6%9E%84/">为什么选择B+树作为数据库索引结构</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/07/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9B+%E6%A0%91%E4%BD%9C%E4%B8%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95%E7%BB%93%E6%9E%84/" class="archive-article-date">
+  	<time datetime="2020-09-07T14:32:02.909Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>首先，来谈谈B树。为什么要使用B树？我们需要明白以下两个事实：</p>
+<h3 id="【事实1】"><a href="#【事实1】" class="headerlink" title="【事实1】"></a>【事实1】</h3><p>不同容量的存储器，访问速度差异悬殊。以磁盘和内存为例，访问磁盘的时间大概是ms级的，访问内存的时间大概是ns级的。有个形象的比喻，若一次内存访问需要1秒，则一次外存访问需要1天。所以，现在的存储系统，都是分级组织的。</p>
+<p><strong>最常用的数据尽可能放在更高层、更小的存储器中，只有在当前层找不到，才向更低层、更大的存储器中寻找。这也就解释了，当处理大规模数据的时候（指无法将数据一次性存入内存），算法的实际运行时间，往往取决于数据在不同存储级别之间的IO次数。因此，要想提升速度，关键在于减少IO。</strong></p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/07/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9B+%E6%A0%91%E4%BD%9C%E4%B8%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95%E7%BB%93%E6%9E%84/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-StringBuilder是线程不安全的原因" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -401,81 +466,9 @@
 
 
   
-    <article id="post-Redis过期删除策略" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/24/Redis%E8%BF%87%E6%9C%9F%E5%88%A0%E9%99%A4%E7%AD%96%E7%95%A5/">Redis过期删除策略</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/24/Redis%E8%BF%87%E6%9C%9F%E5%88%A0%E9%99%A4%E7%AD%96%E7%95%A5/" class="archive-article-date">
-  	<time datetime="2020-04-24T13:22:01.873Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>对于Redis服务器来说，内存资源非常宝贵，如果一些过期键一直不被删除，就会造成资源浪费，因此我们需要考虑一个问题：如果一个键过期了，它什么时候会被删除呢？</p>
-<h2 id="1-常见的删除策略"><a href="#1-常见的删除策略" class="headerlink" title="1. 常见的删除策略"></a>1. 常见的删除策略</h2><p>常见的删除策略有以下3种：</p>
-<ul>
-<li><strong>定时删除</strong></li>
-</ul>
-<p>在设置键的过期时间的同时，创建一个定时器，让定时器在键的过期时间来临时，立即执行对键的删除操作。</p>
-<ul>
-<li><strong>惰性删除</strong></li>
-</ul>
-<p>放任过期键不管，每次从键空间中获取键时，检查该键是否过期，如果过期，就删除该键，如果没有过期，就返回该键。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/24/Redis%E8%BF%87%E6%9C%9F%E5%88%A0%E9%99%A4%E7%AD%96%E7%95%A5/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">« Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/">Next »</a>
+      <a class="extend prev" rel="prev" href="/">« Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/">Next »</a>
     </nav>
   
 
