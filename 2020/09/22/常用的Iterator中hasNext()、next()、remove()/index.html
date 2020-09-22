@@ -8,17 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>常用的Iterator中hasNext()、next()、remove() | 郭付一男的Hexo博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Keep Working">
+  <meta name="description" content="一、Iterator的API关于Iterator主要有三个方法：hasNext()、next()、remove()  hasNext:没有指针下移操作，只是判断是否存在下一个元素 next：指针下移，返回该指针所指向的元素 remove：删除当前指针所指向的元素，一般和next方法一起用，这时候的作用就是删除next方法返回的元素  二、迭代器原理 1、当创建完成指向某个集合或者容器的Iterat">
 <meta property="og:type" content="article">
 <meta property="og:title" content="常用的Iterator中hasNext()、next()、remove()">
 <meta property="og:url" content="http://yoursite.com/2020/09/22/%E5%B8%B8%E7%94%A8%E7%9A%84Iterator%E4%B8%ADhasNext()%E3%80%81next()%E3%80%81remove()/index.html">
 <meta property="og:site_name" content="郭付一男的Hexo博客">
-<meta property="og:description" content="Keep Working">
+<meta property="og:description" content="一、Iterator的API关于Iterator主要有三个方法：hasNext()、next()、remove()  hasNext:没有指针下移操作，只是判断是否存在下一个元素 next：指针下移，返回该指针所指向的元素 remove：删除当前指针所指向的元素，一般和next方法一起用，这时候的作用就是删除next方法返回的元素  二、迭代器原理 1、当创建完成指向某个集合或者容器的Iterat">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/8KKrHK5ic6XCSvBptYZIrH543hhTerKvD94MecTeoic7Lo9QibKyk2ic5icddV8SXpOJrGPJAOq9GINRLueq5LVTiayA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
 <meta property="article:published_time" content="2020-09-22T14:33:27.471Z">
-<meta property="article:modified_time" content="2020-09-22T14:33:27.471Z">
+<meta property="article:modified_time" content="2020-09-22T14:44:27.159Z">
 <meta property="article:author" content="郭付一男">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/8KKrHK5ic6XCSvBptYZIrH543hhTerKvD94MecTeoic7Lo9QibKyk2ic5icddV8SXpOJrGPJAOq9GINRLueq5LVTiayA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
   
     <link rel="alternative" href="/atom.xml" title="郭付一男的Hexo博客" type="application/atom+xml">
   
@@ -162,7 +164,35 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="一、Iterator的API"><a href="#一、Iterator的API" class="headerlink" title="一、Iterator的API"></a>一、Iterator的API</h2><p>关于Iterator主要有三个方法：hasNext()、next()、remove()</p>
+<ul>
+<li>hasNext:没有指针下移操作，只是判断是否存在下一个元素</li>
+<li>next：指针下移，返回该指针所指向的元素</li>
+<li>remove：删除当前指针所指向的元素，一般和next方法一起用，这时候的作用就是删除next方法返回的元素</li>
+</ul>
+<h2 id="二、迭代器原理"><a href="#二、迭代器原理" class="headerlink" title="二、迭代器原理"></a>二、迭代器原理</h2><p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/8KKrHK5ic6XCSvBptYZIrH543hhTerKvD94MecTeoic7Lo9QibKyk2ic5icddV8SXpOJrGPJAOq9GINRLueq5LVTiayA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<p>1、当创建完成指向某个集合或者容器的Iterator对象时，这时的指针其实指向的是第一个元素的上方，即指向一个空。(int cursor = 0;)</p>
+<p>2、当调用hasNext方法的时候，只是判断下一个元素的有无，并不移动指针</p>
+<p>3、当调用next方法的时候，向下移动指针，并且返回指针指向的元素，如果指针指向的内存中没有元素，会报异 常。</p>
+<p>4、remove方法删除的元素是指针指向的元素。如果当前指针指向的内存中没有元素，那么会抛出异常。</p>
+<h2 id="三、迭代器的用途"><a href="#三、迭代器的用途" class="headerlink" title="三、迭代器的用途"></a>三、迭代器的用途</h2><p>迭代器一般会用在遍历集合上面。</p>
+<h2 id="四、使用中注意的问题"><a href="#四、使用中注意的问题" class="headerlink" title="四、使用中注意的问题"></a>四、使用中注意的问题</h2><p>Java中的Iterator是一种fail-fast的设计。</p>
+<p>当Iterator迭代一个容器的时候，如果此时有别的方法在更改Collection（容器）的内容，那么Iterator就会抛出</p>
+<p>ConcurrentModificationException 。正如官方文档中反复强调的：</p>
+<blockquote>
+<p>Thus, in the face of concurrent modification, the iterator fails quickly and cleanly, rather than risking arbitrary, non-deterministic behavior at an undetermined time in the future.</p>
+</blockquote>
+<p>为了避免此Exception的发生，可以采取的解决方法是：</p>
+<p>1.如果当前单个线程在更改容器(add, delete…)，那么迭代的时候采用iterator.remove()方法可以确保迭代器在查找next的时候，指针不会丢失。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(iterator.hasNext() &#123;</span><br><span class="line"></span><br><span class="line"> Object item = iterator.next();</span><br><span class="line"></span><br><span class="line"> iterator.remove();   </span><br><span class="line"> <span class="comment">//Important! 避免ConcurrentModificationException</span></span><br><span class="line"></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.如果当前有多个线程在对容器进行操作，例如一个线程正在向容器中写数据，而另一个线程在迭代此容器，这时候就必须考虑并发下的线程安全问题。ConcurrentModificationException官方文档第一句就指出：</p>
+<blockquote>
+<p>This exception may be thrown by methods that have detected concurrent modification of an object when such modification is not permissible.</p>
+</blockquote>
+<p>这时候可以采用java.util.concurrent包下面的线程安全的容器解决此异常。</p>
+<p>最后要说的是，ConcurrentModificationException应该永远被用于解决一个bug，而不是检查程序的正确性(try…catch…)。</p>
+
       
 
       
