@@ -142,6 +142,72 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-1.7的ConcurrentHashMap" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/12/1.7%E7%9A%84ConcurrentHashMap/">1.7的ConcurrentHashMap</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/12/1.7%E7%9A%84ConcurrentHashMap/" class="archive-article-date">
+  	<time datetime="2020-05-12T11:55:19.689Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="源码解析："><a href="#源码解析：" class="headerlink" title="源码解析："></a>源码解析：</h2><p>  ConcurrentHashMap离不开Segment，Segment是ConcurrentHashMap的一个静态内部类，可以看到Segment继承了重入锁ReentrantLock，要想访问Segment片段，线程必须获得同步锁，结构如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Segment</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">extends</span> <span class="title">ReentrantLock</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//尝试获取锁的最多尝试次数，即自旋次数</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_SCAN_RETRIES =</span><br><span class="line">            Runtime.getRuntime().availableProcessors() &gt; <span class="number">1</span> ? <span class="number">64</span> : <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//HashEntry数组，也就是键值对数组</span></span><br><span class="line">    <span class="keyword">transient</span> <span class="keyword">volatile</span> HashEntry&lt;K, V&gt;[] table;</span><br><span class="line">    </span><br><span class="line">	<span class="comment">//元素的个数</span></span><br><span class="line">    <span class="keyword">transient</span> <span class="keyword">int</span> count;</span><br><span class="line">    </span><br><span class="line">	<span class="comment">//segment中发生改变元素的操作的次数，如put/remove</span></span><br><span class="line">    <span class="keyword">transient</span> <span class="keyword">int</span> modCount;</span><br><span class="line">    </span><br><span class="line">	<span class="comment">//当table大小超过阈值时,对table进行扩容,值为capacity * loadFactor</span></span><br><span class="line">    <span class="comment">//需要知道的是，每个Segment都是单独处理扩容的，互相之间不会产生影响</span></span><br><span class="line">    <span class="keyword">transient</span> <span class="keyword">int</span> threshold;</span><br><span class="line">    </span><br><span class="line">	<span class="comment">//加载因子</span></span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">float</span> loadFactor;</span><br><span class="line"></span><br><span class="line">    Segment(<span class="keyword">float</span> lf, <span class="keyword">int</span> threshold, HashEntry&lt;K, V&gt;[] tab) &#123;</span><br><span class="line">        <span class="keyword">this</span>.loadFactor = lf;</span><br><span class="line">        <span class="keyword">this</span>.threshold = threshold;</span><br><span class="line">        <span class="keyword">this</span>.table = tab;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/12/1.7%E7%9A%84ConcurrentHashMap/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Redis过期删除策略" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -387,72 +453,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/04/19/volatile%E7%9A%84%E4%BD%BF%E7%94%A8%E5%8F%8A%E5%85%B6%E5%8E%9F%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java中的引用类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/18/Java%E4%B8%AD%E7%9A%84%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/">Java中的引用类型</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/18/Java%E4%B8%AD%E7%9A%84%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2020-04-18T06:08:42.141Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Java中一共有4种引用类型(其实还有一些其他的引用类型比如FinalReference)：强引用、软引用、弱引用、虚引用。</p>
-<p>其中强引用就是我们经常使用的Object a = new Object(); 这样的形式，在Java中并没有对应的Reference类。</p>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>在分析前，先抛几个问题？</p>
-<p>1.网上大多数文章对于软引用的介绍是：在内存不足的时候才会被回收，那内存不足是怎么定义的？什么才叫内存不足？</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/18/Java%E4%B8%AD%E7%9A%84%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/">展开全文 >></a>
         </p>
       
 

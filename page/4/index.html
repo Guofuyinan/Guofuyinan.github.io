@@ -142,6 +142,72 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Java中的引用类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/18/Java%E4%B8%AD%E7%9A%84%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/">Java中的引用类型</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/18/Java%E4%B8%AD%E7%9A%84%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
+  	<time datetime="2020-04-18T06:08:42.141Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Java中一共有4种引用类型(其实还有一些其他的引用类型比如FinalReference)：强引用、软引用、弱引用、虚引用。</p>
+<p>其中强引用就是我们经常使用的Object a = new Object(); 这样的形式，在Java中并没有对应的Reference类。</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>在分析前，先抛几个问题？</p>
+<p>1.网上大多数文章对于软引用的介绍是：在内存不足的时候才会被回收，那内存不足是怎么定义的？什么才叫内存不足？</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/18/Java%E4%B8%AD%E7%9A%84%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-线程间的协作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -383,71 +449,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/04/13/Synchronized%E5%8F%8A%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-HashMap是怎样解决hash冲突的" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/12/HashMap%E6%98%AF%E6%80%8E%E6%A0%B7%E8%A7%A3%E5%86%B3hash%E5%86%B2%E7%AA%81%E7%9A%84/">HashMap是怎样解决hash冲突的</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/12/HashMap%E6%98%AF%E6%80%8E%E6%A0%B7%E8%A7%A3%E5%86%B3hash%E5%86%B2%E7%AA%81%E7%9A%84/" class="archive-article-date">
-  	<time datetime="2020-04-12T06:33:50.403Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在Java编程语言中，最基本的结构就是两种，一种是数组，一种是模拟指针(引用)，所有的数据结构都可以用这两个基本结构构造，HashMap也一样。</p>
-<p>当程序试图<strong>将多个 key-value 放入 HashMap 中时</strong>，以如下代码片段为例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HashMap&lt;String,Object&gt; m=<span class="keyword">new</span> HashMap&lt;String,Object&gt;(); </span><br><span class="line">m.put(<span class="string">"a"</span>, <span class="string">"rrr1"</span>); </span><br><span class="line">m.put(<span class="string">"b"</span>, <span class="string">"tt9"</span>); </span><br><span class="line">m.put(<span class="string">"c"</span>, <span class="string">"tt8"</span>);</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/12/HashMap%E6%98%AF%E6%80%8E%E6%A0%B7%E8%A7%A3%E5%86%B3hash%E5%86%B2%E7%AA%81%E7%9A%84/">展开全文 >></a>
         </p>
       
 
