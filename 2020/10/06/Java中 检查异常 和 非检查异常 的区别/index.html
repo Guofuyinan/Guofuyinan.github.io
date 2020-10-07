@@ -16,7 +16,7 @@
 <meta property="og:description" content="代码123456789public class ExceptionTypeTest &amp;#123;    public void doSomething() throws ArithmeticException&amp;#123;        System.out.println();        &amp;#125;        public static void main()&amp;#123;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-10-06T05:38:06.249Z">
-<meta property="article:modified_time" content="2020-10-06T07:42:31.308Z">
+<meta property="article:modified_time" content="2020-10-07T06:06:13.980Z">
 <meta property="article:author" content="郭付一男">
 <meta name="twitter:card" content="summary">
   
@@ -169,6 +169,22 @@
 <p>能编译通过。</p>
 <p>分析:按照一般常理，定义doSomething方法是定义了ArithmeticException异常，在main方法里面调用了该方法。那么应当继续抛出或者捕获一下。但是ArithmeticException异常是继承RuntimeException运行时异常。</p>
 <p>Java里面异常分为两大类:checkedexception(检查异常)和unchecked exception(未检查异常)，对于未检查异常也叫RuntimeException(运行时异常),对于运行时异常，java编译器不要求你一定要把它捕获或者一定要继续抛出，但是对checkedexception(检查异常)要求你必须要在方法里面或者捕获或者继续抛出。</p>
+<h3 id="上面的程序将ArithmeticException改为IOException能否编译通过？"><a href="#上面的程序将ArithmeticException改为IOException能否编译通过？" class="headerlink" title="上面的程序将ArithmeticException改为IOException能否编译通过？"></a>上面的程序将ArithmeticException改为IOException能否编译通过？</h3><p>不能编译通过。分析:IOException extends Exception 是属于checked exception，必须进行处理，或者必须捕获或者必须抛出。</p>
+<p>总结：java中异常分为两类:checked exception(检查异常)和unchecked exception(未检查异常),对于未检查异常也叫RuntimeException(运行时异常).</p>
+<p>对未检查的异常(unchecked exception )的几种处理方式：</p>
+<ul>
+<li>捕获</li>
+<li>继续抛出</li>
+<li>不处理</li>
+</ul>
+<p>对检查的异常(checked exception，除了RuntimeException，其他的异常都是checked exception )的几种处理方式：</p>
+<ul>
+<li>继续抛出，消极的方法，一直可以抛到java虚拟机来处理</li>
+<li>用try…catch捕获</li>
+</ul>
+<blockquote>
+<p>注意，对于检查的异常必须处理，或者必须捕获或者必须抛出</p>
+</blockquote>
 
       
 
