@@ -16,7 +16,7 @@
 <meta property="og:description" content="代码123456789public class ExceptionTypeTest &amp;#123;    public void doSomething() throws ArithmeticException&amp;#123;        System.out.println();        &amp;#125;        public static void main()&amp;#123;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-10-06T05:38:06.249Z">
-<meta property="article:modified_time" content="2020-10-08T06:38:21.391Z">
+<meta property="article:modified_time" content="2020-10-08T06:47:14.627Z">
 <meta property="article:author" content="郭付一男">
 <meta name="twitter:card" content="summary">
   
@@ -193,6 +193,20 @@
 <li>捕获并处理：在异常的代码附近显示用try/catch进行处理(不合理),运行时系统捕获后会查询相应的catch处理块，再catch处理块中对该异常进行处理。</li>
 <li>查看发生异常的方法是否有向上声明异常，有向上声明，向上级查询处理语句，如果没有向上声明，JVM中断程序的运行并处理。用throws向外声明(合理的处理方法)</li>
 </ol>
+<h4 id="3-异常的分类："><a href="#3-异常的分类：" class="headerlink" title="3.异常的分类："></a>3.异常的分类：</h4><p>java.lang.Throwable</p>
+<ul>
+<li><p>Error错误：JVM内部的严重问题。无法恢复。程序人员不用处理。</p>
+</li>
+<li><p>Exception异常：普通的问题。通过合理的处理，程序还可以回到正常执行流程。要求编程人员要进行处理。</p>
+</li>
+<li><ul>
+<li>RuntimeException:也叫非受检异常(unchecked exception).这类异常是编程人员的逻辑问题。应该承担责任。Java编译器不进行强制要求处理。也就是说，这类异常再程序中，可以进行处理，也可以不处理。</li>
+<li>非RuntimeException:也叫受检异常(checked exception).这类异常是由一些外部的偶然因素所引起的。Java编译器强制要求处理。也就是说，程序必须进行对这类异常进行处理。</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-常见异常："><a href="#4-常见异常：" class="headerlink" title="4.常见异常："></a>4.常见异常：</h4><p>1)非受检的：<code>NullPointerException</code>,<code>ClassCastException</code>,<code>ArrayIndexsOutOfBoundsException</code>,<code>ArithmeticException</code>(算术异常，除0溢出)</p>
+<p>2)受检：<code>Exception</code>,<code>FileNotFoundException</code>,<code>IOException</code>,<code>SQLException</code>.</p>
 
       
 
