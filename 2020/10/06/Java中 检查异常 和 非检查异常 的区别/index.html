@@ -16,7 +16,7 @@
 <meta property="og:description" content="代码123456789public class ExceptionTypeTest &amp;#123;    public void doSomething() throws ArithmeticException&amp;#123;        System.out.println();        &amp;#125;        public static void main()&amp;#123;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-10-06T05:38:06.249Z">
-<meta property="article:modified_time" content="2020-10-07T06:06:13.980Z">
+<meta property="article:modified_time" content="2020-10-08T06:38:21.391Z">
 <meta property="article:author" content="郭付一男">
 <meta name="twitter:card" content="summary">
   
@@ -185,6 +185,14 @@
 <blockquote>
 <p>注意，对于检查的异常必须处理，或者必须捕获或者必须抛出</p>
 </blockquote>
+<h3 id="异常处理-Exception"><a href="#异常处理-Exception" class="headerlink" title="异常处理(Exception)"></a>异常处理(Exception)</h3><h4 id="1-异常："><a href="#1-异常：" class="headerlink" title="1.异常："></a>1.异常：</h4><p>程序再运行期间发生的不正常事件，它会打断指令的正常流程。异常都是发生在程序的运行期，编译出现的问题叫语法错误。</p>
+<h4 id="2-异常的处理机制："><a href="#2-异常的处理机制：" class="headerlink" title="2.异常的处理机制："></a>2.异常的处理机制：</h4><p>1)当程序再运行过程中出现了异常，JVM自动创建一个该类型的异常对象。同时把这个异常对象交给运行时系统。（抛出异常）</p>
+<p>2）运行时系统接受到一个异常对象时，它会再产生异常的代码附近查找相应的处理方式。</p>
+<p>3）异常的处理方式有两种：</p>
+<ol>
+<li>捕获并处理：在异常的代码附近显示用try/catch进行处理(不合理),运行时系统捕获后会查询相应的catch处理块，再catch处理块中对该异常进行处理。</li>
+<li>查看发生异常的方法是否有向上声明异常，有向上声明，向上级查询处理语句，如果没有向上声明，JVM中断程序的运行并处理。用throws向外声明(合理的处理方法)</li>
+</ol>
 
       
 
