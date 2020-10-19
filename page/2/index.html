@@ -142,6 +142,74 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Spring的Controller是单例还是多例，怎么保证并发的安全" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/12/Spring%E7%9A%84Controller%E6%98%AF%E5%8D%95%E4%BE%8B%E8%BF%98%E6%98%AF%E5%A4%9A%E4%BE%8B%EF%BC%8C%E6%80%8E%E4%B9%88%E4%BF%9D%E8%AF%81%E5%B9%B6%E5%8F%91%E7%9A%84%E5%AE%89%E5%85%A8/">Spring的Controller是单例还是多例，怎么保证并发的安全</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/12/Spring%E7%9A%84Controller%E6%98%AF%E5%8D%95%E4%BE%8B%E8%BF%98%E6%98%AF%E5%A4%9A%E4%BE%8B%EF%BC%8C%E6%80%8E%E4%B9%88%E4%BF%9D%E8%AF%81%E5%B9%B6%E5%8F%91%E7%9A%84%E5%AE%89%E5%85%A8/" class="archive-article-date">
+  	<time datetime="2020-09-12T15:28:38.147Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>答案：</p>
+<blockquote>
+<p>controller默认是单例的，不要使用非静态的成员变量，否则会发生数据逻辑混乱。正因为单例所以不是线程安全的。</p>
+</blockquote>
+<p>我们下面来简单的验证下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.riemann.springbootdemo.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Scope;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ScopeTestController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/testScope"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testScope</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(++num);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/testScope2"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testScope2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(++num);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/12/Spring%E7%9A%84Controller%E6%98%AF%E5%8D%95%E4%BE%8B%E8%BF%98%E6%98%AF%E5%A4%9A%E4%BE%8B%EF%BC%8C%E6%80%8E%E4%B9%88%E4%BF%9D%E8%AF%81%E5%B9%B6%E5%8F%91%E7%9A%84%E5%AE%89%E5%85%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ArrayList源码分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -372,69 +440,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/09/03/Java%E4%B8%AD%E7%9A%84finally%E4%B8%80%E5%AE%9A%E4%BC%9A%E8%A2%AB%E6%89%A7%E8%A1%8C%E5%90%97%EF%BC%9F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-1.8ConcurrentHashMap" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/16/1.8ConcurrentHashMap/">1.8ConcurrentHashMap</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/16/1.8ConcurrentHashMap/" class="archive-article-date">
-  	<time datetime="2020-05-16T15:25:48.322Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="initTable-方法："><a href="#initTable-方法：" class="headerlink" title="initTable()方法："></a>initTable()方法：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Node&lt;K,V&gt;[] initTable() &#123;</span><br><span class="line">        Node&lt;K,V&gt;[] tab; <span class="keyword">int</span> sc;</span><br><span class="line">   	    <span class="comment">//循环判断表是否为空，直到初始化成功为止</span></span><br><span class="line">        <span class="keyword">while</span> ((tab = table) == <span class="keyword">null</span> || tab.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">//sizeCtl 这个值有很多情况，默认值为0，</span></span><br><span class="line">  			<span class="comment">//当为 -1 时，说明有其它线程正在对表进行初始化操作</span></span><br><span class="line"> 			<span class="comment">//当表初始化成功后，又会把它设置为扩容阈值</span></span><br><span class="line">  			<span class="comment">//当为一个小于 -1 的负数，用来表示当前有几个线程正在帮助扩容</span></span><br><span class="line">            <span class="keyword">if</span> ((sc = sizeCtl) &lt; <span class="number">0</span>)</span><br><span class="line">                Thread.yield(); </span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (U.compareAndSwapInt(<span class="keyword">this</span>, SIZECTL, sc, -<span class="number">1</span>)) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="keyword">if</span> ((tab = table) == <span class="keyword">null</span> || tab.length == <span class="number">0</span>) &#123;</span><br><span class="line">                        <span class="keyword">int</span> n = (sc &gt; <span class="number">0</span>) ? sc : DEFAULT_CAPACITY;</span><br><span class="line">                        <span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line">                        Node&lt;K,V&gt;[] nt = (Node&lt;K,V&gt;[])<span class="keyword">new</span> Node&lt;?,?&gt;[n];</span><br><span class="line">                        table = tab = nt;</span><br><span class="line">                        sc = n - (n &gt;&gt;&gt; <span class="number">2</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                    sizeCtl = sc;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> tab;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/16/1.8ConcurrentHashMap/">展开全文 >></a>
         </p>
       
 
