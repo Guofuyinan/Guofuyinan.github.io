@@ -16,7 +16,7 @@
 <meta property="og:description" content="前言​    在 B&#x2F;S 系统中，登录功能通常都是基于 Cookie 来实现的。当用户登录成功后，一般会将登录状态记录到 Session 中，或者是给用户签发一个 Token，无论哪一种方式，都需要在客户端保存一些信息（Session ID 或 Token ），并要求客户端在之后的每次请求中携带它们。在这样的场景下，使用 Cookie 无疑是最方便的，因此我们一般都会将 Session 的 ID">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-10-19T03:09:31.955Z">
-<meta property="article:modified_time" content="2020-10-19T03:13:53.075Z">
+<meta property="article:modified_time" content="2020-10-19T03:14:34.494Z">
 <meta property="article:author" content="郭付一男">
 <meta name="twitter:card" content="summary">
   
@@ -191,6 +191,8 @@
 
 <p>​    前端通过 iframe+postMessage() 方式，将同一份 Token 写入到了多个域下的 LocalStorage 中，前端每次在向后端发送请求之前，都会主动从 LocalStorage 中读取 Token 并在请求中携带，这样就实现了同一份 Token 被多个域所共享。</p>
 <p>总结：此种实现方式完全由前端控制，几乎不需要后端参与，同样支持跨域。</p>
+<h2 id="补充：域名分级"><a href="#补充：域名分级" class="headerlink" title="补充：域名分级"></a>补充：域名分级</h2><p>​    从专业的角度来说（根据《计算机网络》中的定义），.com、.cn 为一级域名（也称顶级域名），.com.cn、baidu.com 为二级域名，sina.com.cn、tieba.baidu.com 为三级域名，以此类推，N 级域名就是 N-1 级域名的直接子域名。</p>
+<p>​    从使用者的角度来说，一般把可支持独立备案的主域名称作一级域名，如 baidu.com、sina.com.cn 皆可称作一级域名，在主域名下建立的直接子域名称作二级域名，如 tieba.baidu.com 为二级域名。</p>
 
       
 
