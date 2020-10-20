@@ -199,6 +199,24 @@
 
 <p>可以改为强制查询使用索引：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> t <span class="keyword">with</span>(<span class="keyword">index</span>(索引名))</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">num</span>=@<span class="keyword">num</span></span><br></pre></td></tr></table></figure>
+
+<p><strong><em>08</em></strong></p>
+<p>应尽量避免在 where 子句中对字段进行表达式操作，这将导致引擎放弃使用索引而进行全表扫描。如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> t</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">num</span>/<span class="number">2</span>=<span class="number">100</span></span><br></pre></td></tr></table></figure>
+
+<p>应改为:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> t</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">num</span>=<span class="number">100</span>*<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p><strong><em>09</em></strong></p>
+<p>应尽量避免在where子句中对字段进行函数操作，这将导致引擎放弃使用索引而进行全表扫描。如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> t</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">substring</span>(<span class="keyword">name</span>,<span class="number">1</span>,<span class="number">3</span>)=<span class="string">'abc'</span><span class="comment">--name以abc开头的id</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> t</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">datediff</span>(<span class="keyword">day</span>,createdate,<span class="string">'2005-11-30'</span>)=<span class="number">0</span><span class="comment">--'2005-11-30'生成的id</span></span><br></pre></td></tr></table></figure>
+
+<p>应改为:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> </span><br><span class="line">t <span class="keyword">where</span> <span class="keyword">name</span> <span class="keyword">like</span> <span class="string">'abc%'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> t</span><br><span class="line"><span class="keyword">where</span> createdate&gt;=<span class="string">'2005-11-30'</span> <span class="keyword">and</span> createdate&lt;<span class="string">'2005-12-1'</span></span><br></pre></td></tr></table></figure>
+
+<p><strong><em>10</em></strong></p>
+<p>不要在 <strong>where 子句中的“=”左边进行函数、算术运算或其他表达式运算**</strong>，**否则系统将不能正确使用索引。</p>
+
       
 
       
