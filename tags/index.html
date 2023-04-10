@@ -195,6 +195,52 @@
   </header>
 
   
+    <div class="tag-cloud">
+      <div class="tag-cloud-title">
+        请根据标签找到你关注的内容～ 
+        <br>
+        <br>
+      </div>
+
+      <div class="tag-cloud-tags"> 
+        <a href="/tags/LeetCode/" style="font-size: 18px; color: #555">LeetCode</a>
+      </div>
+    </div>
+
+    <style>
+      .tag-cloud {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      .tag-cloud-title {
+        font-weight: 700;
+        font-size: 24px;
+        color: rgb(8, 182, 115);
+      }
+
+      .tag-cloud-tags {
+        max-width: 40em;
+        margin: 2em auto;
+        margin-top: 0em;
+      }
+
+      .tag-cloud-tags a {
+        margin-right: 1em;
+        border-bottom: 1px dashed gray;
+        line-height: 65px;
+        white-space: nowrap;
+      }
+
+      .tag-cloud-tags a:hover {
+        border-bottom: 3px solid rgb(30, 112, 206);
+        font-weight: bolder;
+        color: #1795e4;
+        text-decoration: none;
+      }
+    </style>
+
+  
 
 </article>
           </div>
@@ -288,6 +334,10 @@
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
