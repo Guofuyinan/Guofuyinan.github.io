@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>LeetCode_1-两数之和 | 郭付一男的Hexo博客</title>
+  <title>Redis集群搭建（一主两从三哨兵） | 郭付一男的Hexo博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="两数之和题目回顾12给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值target的那两个整数，并返回它们的数组下标。你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。">
+  <meta name="description" content="一、Redis集群整体架构整体架构是主从结构+哨兵（sentinel）,实现了容灾的自动切换 一个主节点（master）可拥有多个从节点（slave），从节点实现对主节点的复制，保证数据同步。而哨兵（sentinel）则对各节点进行监控，主要包括主节点存活检测、主从运行情况检测等，一旦主节点宕机，哨兵可自动进行故障转移 （failover）、主从切换">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode_1-两数之和">
-<meta property="og:url" content="http://example.com/2023/04/09/LeetCode_1-Two_Sum/index.html">
+<meta property="og:title" content="Redis集群搭建（一主两从三哨兵）">
+<meta property="og:url" content="http://example.com/2023/05/30/Redis%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA%EF%BC%88%E4%B8%80%E4%B8%BB%E4%B8%A4%E4%BB%8E%E4%B8%89%E5%93%A8%E5%85%B5%EF%BC%89/index.html">
 <meta property="og:site_name" content="郭付一男的Hexo博客">
-<meta property="og:description" content="两数之和题目回顾12给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值target的那两个整数，并返回它们的数组下标。你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。">
+<meta property="og:description" content="一、Redis集群整体架构整体架构是主从结构+哨兵（sentinel）,实现了容灾的自动切换 一个主节点（master）可拥有多个从节点（slave），从节点实现对主节点的复制，保证数据同步。而哨兵（sentinel）则对各节点进行监控，主要包括主节点存活检测、主从运行情况检测等，一旦主节点宕机，哨兵可自动进行故障转移 （failover）、主从切换">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-04-09T07:19:37.000Z">
-<meta property="article:modified_time" content="2023-04-16T10:45:23.484Z">
+<meta property="article:published_time" content="2023-05-30T15:38:52.000Z">
+<meta property="article:modified_time" content="2023-06-07T15:38:07.037Z">
 <meta property="article:author" content="郭付一男">
-<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="Redis">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="郭付一男的Hexo博客" type="application/atom+xml">
@@ -37,7 +37,7 @@
 
   
 
-<meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" type="text/css" href="/assets/css/DPlayer.min.css"><script src="/assets/js/DPlayer.min.js"></script></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -191,20 +191,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-LeetCode_1-Two_Sum" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Redis集群搭建（一主两从三哨兵）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      LeetCode_1-两数之和
+      Redis集群搭建（一主两从三哨兵）
     </h1>
   
 
         
-        <a href="/2023/04/09/LeetCode_1-Two_Sum/" class="archive-article-date">
-  	<time datetime="2023-04-09T07:19:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-09</time>
+        <a href="/2023/05/30/Redis%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA%EF%BC%88%E4%B8%80%E4%B8%BB%E4%B8%A4%E4%BB%8E%E4%B8%89%E5%93%A8%E5%85%B5%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2023-05-30T15:38:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-30</time>
 </a>
         
 
@@ -220,7 +220,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">340字</span>
+        <span class="post-count">384字</span>
       </span>
     </span>
 
@@ -239,23 +239,39 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h1><h2 id="题目回顾"><a href="#题目回顾" class="headerlink" title="题目回顾"></a>题目回顾</h2><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值target的那两个整数，并返回它们的数组下标。</span><br><span class="line">你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。</span><br></pre></td></tr></table></figure>
-
+        <h2 id="一、Redis集群整体架构"><a href="#一、Redis集群整体架构" class="headerlink" title="一、Redis集群整体架构"></a>一、Redis集群整体架构</h2><p>整体架构是主从结构+哨兵（sentinel）,实现了容灾的自动切换</p>
+<p>一个主节点（master）可拥有多个从节点（slave），从节点实现对主节点的复制，保证数据同步。而哨兵（sentinel）则对各节点进行监控，主要包括主节点存活检测、主从运行情况检测等，一旦主节点宕机，哨兵可自动进行故障转移 （failover）、主从切换</p>
 <span id="more"></span>
 
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h3><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [2,7,11,15], target = 9</span><br><span class="line">输出：[0,1]</span><br><span class="line">解释：因为 nums[0] + nums[1] == 9，返回 [0, 1]</span><br></pre></td></tr></table></figure>
+<h3 id="1-1-安装Redis"><a href="#1-1-安装Redis" class="headerlink" title="1.1 安装Redis"></a>1.1 安装Redis</h3><p>使用3台服务器，分别安装 redis</p>
+<table>
+<thead>
+<tr>
+<th>Ip</th>
+<th>Port</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>192.168.0.1</td>
+<td>6379</td>
+<td>Master</td>
+</tr>
+<tr>
+<td>192.168.0.2</td>
+<td>6379</td>
+<td>Slave</td>
+</tr>
+<tr>
+<td>192.168.0.3</td>
+<td>6379</td>
+<td>Slave</td>
+</tr>
+</tbody></table>
+<h3 id="1-2-修改Master配置文件"><a href="#1-2-修改Master配置文件" class="headerlink" title="1.2 修改Master配置文件"></a>1.2 修改Master配置文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bind</span>：0.0.0.0 <span class="comment"># Redis 默认只允许本机访问，把bind修改为0.0.0.0表示允许所有远程访问。如果想指定限制访问，可设置对应的ip</span></span><br><span class="line">port：6379</span><br><span class="line">protected-mode：no <span class="comment"># 关闭保护模式，可以外部访问</span></span><br><span class="line">daemonize：<span class="built_in">yes</span> <span class="comment"># 设置为后台启动</span></span><br><span class="line">logfile：./redis.log</span><br><span class="line">requirepass：123456 <span class="comment"># 设置Redis连接密码</span></span><br><span class="line">masterauth：123456 <span class="comment"># Slave服务连接Master的密码</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h3><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [3,2,4], target = 6</span><br><span class="line">输出：[1,2]</span><br></pre></td></tr></table></figure>
+<h3 id="1-3-修改Slave配置文件"><a href="#1-3-修改Slave配置文件" class="headerlink" title="1.3 修改Slave配置文件"></a>1.3 修改Slave配置文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bind</span>：0.0.0.0 <span class="comment"># Redis 默认只允许本机访问，把bind修改为0.0.0.0表示允许所有远程访问。如果想指定限制访问，可设置对应的ip</span></span><br><span class="line">port：6379</span><br><span class="line">protected-mode：no <span class="comment"># 关闭保护模式，可以外部访问</span></span><br><span class="line">daemonize：<span class="built_in">yes</span> <span class="comment"># 设置为后台启动</span></span><br><span class="line">logfile：./redis.log</span><br><span class="line">requirepass：123456 <span class="comment"># 设置Redis连接密码</span></span><br><span class="line">masterauth：123456 <span class="comment"># Slave服务连接Master的密码</span></span><br><span class="line">replicaof 192.168.0.1 6379 <span class="comment"># 指定当本机为Slave服务时，设置Master服务的IP地址及端口</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="示例3"><a href="#示例3" class="headerlink" title="示例3"></a>示例3</h3><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [3,3], target = 6</span><br><span class="line">输出：[0,1]</span><br></pre></td></tr></table></figure>
-
-<h2 id="视频题解"><a href="#视频题解" class="headerlink" title="视频题解"></a>视频题解</h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ul>
-<li>通过暴力遍历的话也是很容易解决的，时间复杂度在 <em>O</em>(<em>n</em>2)</li>
-<li>哈希查找的时间复杂度为 <em>O</em>(1)，所以可以利用哈希容器 map 降低时间复杂度</li>
-</ul>
-<h3 id="Java代码"><a href="#Java代码" class="headerlink" title="Java代码"></a>Java代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] twoSum(<span class="type">int</span>[] nums, <span class="type">int</span> target) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">arrayLength</span> <span class="operator">=</span> nums.length;</span><br><span class="line">        Map&lt;Integer, Integer&gt; targetMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;(arrayLength);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; arrayLength; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (targetMap.containsKey(target - nums[i])) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;targetMap.get(target - nums[i]), i&#125;;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                targetMap.put(nums[i], i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"autoplay":true,"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/2023/04/09/LeetCode_1-Two_Sum/LeetCode_1-Two_Sum.m4v","pic":"LeetCode_1-Two_Sum.jpeg"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 
       
 
@@ -290,7 +306,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Redis</a>
         		</li>
       		
 		</ul>
@@ -302,11 +318,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/LeetCode//" class="article-tag-list-link color4">LeetCode</a>
+        			<a href="/categories/数据库//" class="article-tag-list-link color4">数据库</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/LeetCode/简单//" class="article-tag-list-link color3">简单</a>
+        			<a href="/categories/数据库/Redis//" class="article-tag-list-link color1">Redis</a>
         		</li>
       		
 		</ul>
@@ -361,7 +377,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/04/09/LeetCode_1-Two_Sum/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/05/30/Redis%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA%EF%BC%88%E4%B8%80%E4%B8%BB%E4%B8%A4%E4%BB%8E%E4%B8%89%E5%93%A8%E5%85%B5%EF%BC%89/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -375,15 +391,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2023/04/17/LeetCode-2-Add-Two-Numbers/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          LeetCode_2-两数相加
-        
-      </div>
-    </a>
   
+    <a href="/2023/05/20/Ansible%E6%89%B9%E9%87%8F%E6%9B%B4%E6%96%B0%E8%BF%9C%E7%A8%8B%E4%B8%BB%E6%9C%BA%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Ansible批量更新远程主机用户密码</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
