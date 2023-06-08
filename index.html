@@ -213,7 +213,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">384字</span>
+        <span class="post-count">808字</span>
       </span>
     </span>
 
@@ -222,7 +222,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">3分</span>
       </span>
     </span>
 </div>
@@ -232,8 +232,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、Redis集群整体架构"><a href="#一、Redis集群整体架构" class="headerlink" title="一、Redis集群整体架构"></a>一、Redis集群整体架构</h2><p>整体架构是主从结构+哨兵（sentinel）,实现了容灾的自动切换</p>
-<p>一个主节点（master）可拥有多个从节点（slave），从节点实现对主节点的复制，保证数据同步。而哨兵（sentinel）则对各节点进行监控，主要包括主节点存活检测、主从运行情况检测等，一旦主节点宕机，哨兵可自动进行故障转移 （failover）、主从切换</p>
+        <h2 id="一、Redis集群整体架构"><a href="#一、Redis集群整体架构" class="headerlink" title="一、Redis集群整体架构"></a>一、Redis集群整体架构</h2><p>整体架构是主从结构+哨兵（sentinel）,实现了容灾的自动切换。一个主节点（master）可拥有多个从节点（slave），从节点实现对主节点的复制，保证数据同步。而哨兵（sentinel）则对各节点进行监控，主要包括主节点存活检测、主从运行情况检测等，一旦主节点宕机，哨兵可自动进行故障转移 （failover）、主从切换</p>
         
       
 

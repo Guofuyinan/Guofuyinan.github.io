@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>Redis集群搭建（一主两从三哨兵） | 郭付一男的Hexo博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、Redis集群整体架构整体架构是主从结构+哨兵（sentinel）,实现了容灾的自动切换 一个主节点（master）可拥有多个从节点（slave），从节点实现对主节点的复制，保证数据同步。而哨兵（sentinel）则对各节点进行监控，主要包括主节点存活检测、主从运行情况检测等，一旦主节点宕机，哨兵可自动进行故障转移 （failover）、主从切换">
+  <meta name="description" content="一、Redis集群整体架构整体架构是主从结构+哨兵（sentinel）,实现了容灾的自动切换。一个主节点（master）可拥有多个从节点（slave），从节点实现对主节点的复制，保证数据同步。而哨兵（sentinel）则对各节点进行监控，主要包括主节点存活检测、主从运行情况检测等，一旦主节点宕机，哨兵可自动进行故障转移 （failover）、主从切换">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis集群搭建（一主两从三哨兵）">
 <meta property="og:url" content="http://example.com/2023/05/30/Redis%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA%EF%BC%88%E4%B8%80%E4%B8%BB%E4%B8%A4%E4%BB%8E%E4%B8%89%E5%93%A8%E5%85%B5%EF%BC%89/index.html">
 <meta property="og:site_name" content="郭付一男的Hexo博客">
-<meta property="og:description" content="一、Redis集群整体架构整体架构是主从结构+哨兵（sentinel）,实现了容灾的自动切换 一个主节点（master）可拥有多个从节点（slave），从节点实现对主节点的复制，保证数据同步。而哨兵（sentinel）则对各节点进行监控，主要包括主节点存活检测、主从运行情况检测等，一旦主节点宕机，哨兵可自动进行故障转移 （failover）、主从切换">
+<meta property="og:description" content="一、Redis集群整体架构整体架构是主从结构+哨兵（sentinel）,实现了容灾的自动切换。一个主节点（master）可拥有多个从节点（slave），从节点实现对主节点的复制，保证数据同步。而哨兵（sentinel）则对各节点进行监控，主要包括主节点存活检测、主从运行情况检测等，一旦主节点宕机，哨兵可自动进行故障转移 （failover）、主从切换">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-05-30T15:38:52.000Z">
-<meta property="article:modified_time" content="2023-06-07T15:38:07.037Z">
+<meta property="article:modified_time" content="2023-06-08T13:53:32.843Z">
 <meta property="article:author" content="郭付一男">
 <meta property="article:tag" content="Redis">
 <meta name="twitter:card" content="summary">
@@ -220,7 +220,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">384字</span>
+        <span class="post-count">808字</span>
       </span>
     </span>
 
@@ -229,7 +229,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">3分</span>
       </span>
     </span>
 </div>
@@ -239,8 +239,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、Redis集群整体架构"><a href="#一、Redis集群整体架构" class="headerlink" title="一、Redis集群整体架构"></a>一、Redis集群整体架构</h2><p>整体架构是主从结构+哨兵（sentinel）,实现了容灾的自动切换</p>
-<p>一个主节点（master）可拥有多个从节点（slave），从节点实现对主节点的复制，保证数据同步。而哨兵（sentinel）则对各节点进行监控，主要包括主节点存活检测、主从运行情况检测等，一旦主节点宕机，哨兵可自动进行故障转移 （failover）、主从切换</p>
+        <h2 id="一、Redis集群整体架构"><a href="#一、Redis集群整体架构" class="headerlink" title="一、Redis集群整体架构"></a>一、Redis集群整体架构</h2><p>整体架构是主从结构+哨兵（sentinel）,实现了容灾的自动切换。一个主节点（master）可拥有多个从节点（slave），从节点实现对主节点的复制，保证数据同步。而哨兵（sentinel）则对各节点进行监控，主要包括主节点存活检测、主从运行情况检测等，一旦主节点宕机，哨兵可自动进行故障转移 （failover）、主从切换</p>
 <span id="more"></span>
 
 <h3 id="1-1-安装Redis"><a href="#1-1-安装Redis" class="headerlink" title="1.1 安装Redis"></a>1.1 安装Redis</h3><p>使用3台服务器，分别安装 redis</p>
@@ -267,10 +266,36 @@
 <td>6379</td>
 <td>Slave</td>
 </tr>
+<tr>
+<td>192.168.0.4</td>
+<td>26379</td>
+<td>Sentinel</td>
+</tr>
+<tr>
+<td>192.168.0.5</td>
+<td>26379</td>
+<td>Sentinel</td>
+</tr>
+<tr>
+<td>192.168.0.6</td>
+<td>26379</td>
+<td>Sentinel</td>
+</tr>
 </tbody></table>
 <h3 id="1-2-修改Master配置文件"><a href="#1-2-修改Master配置文件" class="headerlink" title="1.2 修改Master配置文件"></a>1.2 修改Master配置文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bind</span>：0.0.0.0 <span class="comment"># Redis 默认只允许本机访问，把bind修改为0.0.0.0表示允许所有远程访问。如果想指定限制访问，可设置对应的ip</span></span><br><span class="line">port：6379</span><br><span class="line">protected-mode：no <span class="comment"># 关闭保护模式，可以外部访问</span></span><br><span class="line">daemonize：<span class="built_in">yes</span> <span class="comment"># 设置为后台启动</span></span><br><span class="line">logfile：./redis.log</span><br><span class="line">requirepass：123456 <span class="comment"># 设置Redis连接密码</span></span><br><span class="line">masterauth：123456 <span class="comment"># Slave服务连接Master的密码</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="1-3-修改Slave配置文件"><a href="#1-3-修改Slave配置文件" class="headerlink" title="1.3 修改Slave配置文件"></a>1.3 修改Slave配置文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bind</span>：0.0.0.0 <span class="comment"># Redis 默认只允许本机访问，把bind修改为0.0.0.0表示允许所有远程访问。如果想指定限制访问，可设置对应的ip</span></span><br><span class="line">port：6379</span><br><span class="line">protected-mode：no <span class="comment"># 关闭保护模式，可以外部访问</span></span><br><span class="line">daemonize：<span class="built_in">yes</span> <span class="comment"># 设置为后台启动</span></span><br><span class="line">logfile：./redis.log</span><br><span class="line">requirepass：123456 <span class="comment"># 设置Redis连接密码</span></span><br><span class="line">masterauth：123456 <span class="comment"># Slave服务连接Master的密码</span></span><br><span class="line">replicaof 192.168.0.1 6379 <span class="comment"># 指定当本机为Slave服务时，设置Master服务的IP地址及端口</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4-安装Redis哨兵"><a href="#1-4-安装Redis哨兵" class="headerlink" title="1.4 安装Redis哨兵"></a>1.4 安装Redis哨兵</h3><p>Redis哨兵是Redis 的高可用性解决方案，由一个或多个哨兵实例组成。它可以监视任意多个主服务器，以及这些主服务器属下的所有从服务器，并在被监视的主服务器进入下线状态时，自动将下线主服务器属下的某个从服务器升级为新的主服务器，它的主要功能如下：</p>
+<ul>
+<li><strong>监控(Monitoring)：</strong> 哨兵会不断地检查你的主服务器和从服务器是否运作正常。</li>
+<li><strong>通知(Notification)：</strong> 当被监控的某个Redis服务器出现问题时，哨兵可以通过API向管理员或者其他应用程序发送通知。</li>
+<li><strong>故障迁移：</strong> 当主服务器不能正常工作时，哨兵会自动进行故障迁移，也就是主从切换。</li>
+<li><strong>统一的配置管理：</strong> 连接者询问哨兵取得主从的地址。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">port:26379 <span class="comment"># 端口默认为26379</span></span><br><span class="line">protected-mode:no <span class="comment"># 关闭保护模式，可以外部访问</span></span><br><span class="line">daemonize:<span class="built_in">yes</span> <span class="comment"># 设置为后台启动</span></span><br><span class="line">logfile:./sentinel.log</span><br><span class="line">sentinel monitor mymaster 192.168.180.196 6379 2 <span class="comment"># 指定主机IP地址和端口，并且指定当有2台哨兵认为主机挂了，则对主机进行容灾切换</span></span><br><span class="line">sentinel auth-pass mymaster 123456 <span class="comment"># 当在Redis实例中开启了requirepass，这里就需要提供密码</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-5-启动服务"><a href="#1-5-启动服务" class="headerlink" title="1.5 启动服务"></a>1.5 启动服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">192.168.0.1 执行 src/redis-server redis.conf</span><br><span class="line">192.168.0.2 执行 src/redis-server redis.conf</span><br><span class="line">192.168.0.3 执行 src/redis-server redis.conf</span><br><span class="line">192.168.0.4 执行 src/redis-sentinel sentinel.conf</span><br><span class="line">192.168.0.5 执行 src/redis-sentinel sentinel.conf</span><br><span class="line">192.168.0.6 执行 src/redis-sentinel sentinel.conf</span><br></pre></td></tr></table></figure>
 
 
       
