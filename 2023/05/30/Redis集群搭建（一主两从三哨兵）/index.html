@@ -16,7 +16,7 @@
 <meta property="og:description" content="一、Redis集群整体架构整体架构是主从结构+哨兵（sentinel）,实现了容灾的自动切换。一个主节点（master）可拥有多个从节点（slave），从节点实现对主节点的复制，保证数据同步。而哨兵（sentinel）则对各节点进行监控，主要包括主节点存活检测、主从运行情况检测等，一旦主节点宕机，哨兵可自动进行故障转移 （failover）、主从切换">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-05-30T15:38:52.000Z">
-<meta property="article:modified_time" content="2023-06-08T13:53:32.843Z">
+<meta property="article:modified_time" content="2023-06-10T15:55:53.137Z">
 <meta property="article:author" content="郭付一男">
 <meta property="article:tag" content="Redis">
 <meta name="twitter:card" content="summary">
@@ -220,7 +220,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">808字</span>
+        <span class="post-count">806字</span>
       </span>
     </span>
 
@@ -293,7 +293,7 @@
 <li><strong>故障迁移：</strong> 当主服务器不能正常工作时，哨兵会自动进行故障迁移，也就是主从切换。</li>
 <li><strong>统一的配置管理：</strong> 连接者询问哨兵取得主从的地址。</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">port:26379 <span class="comment"># 端口默认为26379</span></span><br><span class="line">protected-mode:no <span class="comment"># 关闭保护模式，可以外部访问</span></span><br><span class="line">daemonize:<span class="built_in">yes</span> <span class="comment"># 设置为后台启动</span></span><br><span class="line">logfile:./sentinel.log</span><br><span class="line">sentinel monitor mymaster 192.168.180.196 6379 2 <span class="comment"># 指定主机IP地址和端口，并且指定当有2台哨兵认为主机挂了，则对主机进行容灾切换</span></span><br><span class="line">sentinel auth-pass mymaster 123456 <span class="comment"># 当在Redis实例中开启了requirepass，这里就需要提供密码</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">port:26379 <span class="comment"># 端口默认为26379</span></span><br><span class="line">protected-mode:no <span class="comment"># 关闭保护模式，可以外部访问</span></span><br><span class="line">daemonize:<span class="built_in">yes</span> <span class="comment"># 设置为后台启动</span></span><br><span class="line">logfile:./sentinel.log</span><br><span class="line">sentinel monitor mymaster 192.168.180.196 6379 2 <span class="comment"># 指定主机IP地址和端口，并且指定当有2台哨兵认为主机挂了，则对主机进行容灾切换</span></span><br><span class="line">sentinel auth-pass mymaster 123456 <span class="comment"># 当在Redis实例中开启了requirepass，就需要提供密码</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="1-5-启动服务"><a href="#1-5-启动服务" class="headerlink" title="1.5 启动服务"></a>1.5 启动服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">192.168.0.1 执行 src/redis-server redis.conf</span><br><span class="line">192.168.0.2 执行 src/redis-server redis.conf</span><br><span class="line">192.168.0.3 执行 src/redis-server redis.conf</span><br><span class="line">192.168.0.4 执行 src/redis-sentinel sentinel.conf</span><br><span class="line">192.168.0.5 执行 src/redis-sentinel sentinel.conf</span><br><span class="line">192.168.0.6 执行 src/redis-sentinel sentinel.conf</span><br></pre></td></tr></table></figure>
 
